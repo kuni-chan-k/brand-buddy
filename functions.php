@@ -495,3 +495,20 @@ add_shortcode("linkcard", "show_Linkcard");
  * HTMLタグ設定
  */
 get_template_part('include/html-tag-setting');
+
+//テーマアップデート
+// https://kuni-chan.com/theme.json
+require 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+  'https://github.com/kuni-chan-k/bb-theme/',
+  __FILE__,
+  'unique-plugin-or-theme-slug'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('main');
+
+//Optional: If you're using a private repository, specify the access token like this:
+$myUpdateChecker->setAuthentication('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');
