@@ -1,11 +1,13 @@
 <?php
+
 /**
  * カスタマイザーに任意のCSSを読み込ませる
  */
-function customizer_css(){
+function customizer_script()
+{
   wp_enqueue_style('customizer-css', get_theme_file_uri('/css/customizer.css'));
 }
-add_action('customize_controls_enqueue_scripts', 'customizer_css');
+add_action('customize_controls_enqueue_scripts', 'customizer_script');
 
 
 // すべてのアイキャッチ画像の有効化
@@ -16,91 +18,112 @@ add_theme_support('post-thumbnails');
  */
 function my_meta_ogp()
 {
-  if (is_front_page() || is_home() || is_singular() || is_404()) {
-    // 画像 （アイキャッチ画像が無い時に使用する代替画像URL）
-    if (!empty(get_theme_mod('top_job'))) {
-      // TODO
-      $ogp_image = 'https://kuni-chan.com/wp-content/uploads/2023/06/OGP.png';
-    } else {
-      $ogp_image = get_template_directory_uri() . '/img/default_thumbnail.png';
-    }
-
-    // Twitterカードの種類（summary_large_image または summary を指定）
-    $twitter_card = 'summary_large_image';
-    // Facebook APP ID
-    $facebook_app_id = '';
-
-    global $post;
-    $ogp_title = '';
-    $ogp_description = '';
-    $ogp_url = '';
-    $html = '';
-    if (is_singular()) {
-      // 記事＆固定ページ
-      setup_postdata($post);
-      $ogp_title = $post->post_title . ' | ' . get_bloginfo('name');
-      $ogp_description = mb_substr(get_the_excerpt(), 0, 100);
-      $ogp_url = get_permalink();
-      wp_reset_postdata();
-    } elseif (is_front_page() || is_home()) {
-      // トップページ
-      $ogp_title = get_bloginfo('name');
-      $ogp_description = get_bloginfo('description');
-      $ogp_url = home_url();
-    } elseif (is_404()) {
-      $ogp_title = 'ページが見つかりませんでした | ' . get_bloginfo('name');
-      $ogp_description = 'お探しのページが見つかりませんでした';
-    }
-
-    // og:type
-    $ogp_type = (is_front_page() || is_home()) ? 'website' : 'article';
-
-    // og:image
-    if (is_singular() && has_post_thumbnail()) {
-      $ps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-      $ogp_image = $ps_thumb[0];
-    }
-
-    // 出力するOGPタグをまとめる
-    $html = "\n";
-    $html .= '<title>'. esc_attr($ogp_title) .'</title>' . "\n";
-    $html .= '<meta property="og:title" content="' . esc_attr($ogp_title) . '">' . "\n";
-    $html .= '<meta property="og:description" content="' . esc_attr($ogp_description) . '">' . "\n";
-    $html .= '<meta property="og:type" content="' . $ogp_type . '">' . "\n";
-    $html .= '<meta property="og:url" content="' . esc_url($ogp_url) . '">' . "\n";
-    $html .= '<meta property="og:image" content="' . esc_url($ogp_image) . '">' . "\n";
-    $html .= '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '">' . "\n";
-    $html .= '<meta name="twitter:card" content="' . $twitter_card . '">' . "\n";
-    $html .= '<meta property="og:locale" content="ja_JP">' . "\n";
-
-    if ($facebook_app_id != "") {
-      $html .= '<meta property="fb:app_id" content="' . $facebook_app_id . '">' . "\n";
-    }
-
-    echo $html;
+  // 画像 （アイキャッチ画像が無い時に使用する代替画像URL）
+  if (!empty(get_theme_mod('share_ogp'))) {
+    $ogp_image = get_theme_mod('share_ogp');
+  } else {
+    $ogp_image = get_template_directory_uri() . '/img/default_thumbnail.png';
   }
+
+  // Twitterカードの種類（summary_large_image または summary を指定）
+  if (!empty(get_theme_mod('share_twitter_card'))) {
+    $twitter_card = get_theme_mod('share_twitter_card');
+  } else {
+    $twitter_card = 'summary_large_image';
+  }
+
+  // Facebook APP ID
+  if(!empty(get_theme_mod('share_facebook_id'))) {
+    $facebook_app_id = get_theme_mod('share_facebook_id');
+  } else {
+    $facebook_app_id = '';
+  }
+
+  global $post;
+  $ogp_title = '';
+  $ogp_description = '';
+  $ogp_url = '';
+  $html = '';
+  if (is_singular()) {
+    // 記事＆固定ページ
+    setup_postdata($post);
+    $ogp_title = $post->post_title . ' | ' . get_bloginfo('name');
+    $ogp_description = mb_substr(get_the_excerpt(), 0, 100);
+    $ogp_url = get_permalink();
+    wp_reset_postdata();
+
+  } elseif (is_front_page() || is_home()) {
+    // トップページ
+    $ogp_title = get_bloginfo('name');
+    $ogp_description = get_bloginfo('description');
+    $ogp_url = home_url();
+
+  } elseif (is_category()) {
+    // カテゴリーアーカイブ
+    $cat = get_the_category();
+    $ogp_title = $cat[0]->name . ' | ' . get_bloginfo('name');
+    $ogp_description = ($cat[0]->description) ? $cat[0]->description : get_bloginfo('description');
+    $ogp_url = get_category_link($cat[0]->term_id);
+    wp_reset_postdata();
+
+  } elseif (is_tag()) {
+    // タグーアーカイブ
+    $tag = get_the_tags();
+    $ogp_title = $tag[0]->name . ' | ' . get_bloginfo('name');
+    $ogp_description = ($tag[0]->description) ? $tag[0]->description : get_bloginfo('description');
+    $ogp_url = get_tag_link($tag[0]->term_id);
+    wp_reset_postdata();
+
+  } elseif (is_404()) {
+    $ogp_title = 'ページが見つかりませんでした | ' . get_bloginfo('name');
+    $ogp_description = 'お探しのページが見つかりませんでした';
+  }
+
+  // og:type
+  $ogp_type = (is_front_page() || is_home()) ? 'website' : 'article';
+
+  // og:image
+  if (is_singular() && has_post_thumbnail()) {
+    $ps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+    $ogp_image = $ps_thumb[0];
+  }
+
+  // 出力するOGPタグをまとめる
+  $html = "\n";
+  $html .= '<title>' . esc_attr($ogp_title) . '</title>' . "\n";
+  $html .= '<meta property="og:title" content="' . esc_attr($ogp_title) . '">' . "\n";
+  $html .= '<meta property="og:description" content="' . esc_attr($ogp_description) . '">' . "\n";
+  $html .= '<meta property="og:type" content="' . $ogp_type . '">' . "\n";
+  $html .= '<meta property="og:url" content="' . esc_url($ogp_url) . '">' . "\n";
+  $html .= '<meta property="og:image" content="' . esc_url($ogp_image) . '">' . "\n";
+  $html .= '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '">' . "\n";
+  $html .= '<meta name="twitter:card" content="' . $twitter_card . '">' . "\n";
+  $html .= '<meta property="og:locale" content="ja_JP">' . "\n";
+
+  if ($facebook_app_id != "") {
+    $html .= '<meta property="fb:app_id" content="' . $facebook_app_id . '">' . "\n";
+  }
+
+  echo $html;
 }
 // headタグ内にOGPを出力する
 add_action('wp_head', 'my_meta_ogp');
 
-
-/**
- * Custom Functions
- */
-get_template_part('include/custom-functions');
-
 /**
  * テーマカスタマイザー
  */
-function my_theme_customize_register($wp_customize){
+function my_theme_customize_register($wp_customize)
+{
   name_customizer($wp_customize);
   sns_customizer($wp_customize);
   banner_customizer($wp_customize);
   work_customizer($wp_customize);
+  share_customizer($wp_customize);
 }
 add_action('customize_register', 'my_theme_customize_register');
 
-function name_customizer($wp_customize){
+function name_customizer($wp_customize)
+{
   $prefix = 'top';
   $option_name = "{$prefix}_options";
   $section_name = "{$prefix}_section";
@@ -143,7 +166,8 @@ function name_customizer($wp_customize){
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
 }
 
-function sns_customizer($wp_customize){
+function sns_customizer($wp_customize)
+{
   $prefix = 'sns';
   $option_name = "{$prefix}_options";
   $section_name = "{$prefix}_section";
@@ -242,9 +266,33 @@ function sns_customizer($wp_customize){
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+  $fields = [
+    'sns_line_under' => [
+      'label'       => '',
+      'type'        => 'hidden',
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
+  $fields = [
+    'sns_github' => [
+      'label'       => 'GithubアカウントのURL',
+      'type'        => 'url',
+      'default'     => ''
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+  $fields = [
+    'sns_github_under' => [
+      'label'       => '',
+      'type'        => 'hidden',
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
 }
 
-function banner_customizer($wp_customize){
+function banner_customizer($wp_customize)
+{
   $prefix = 'banner';
   $option_name = "{$prefix}_options";
   $section_name = "{$prefix}_section";
@@ -268,28 +316,23 @@ function banner_customizer($wp_customize){
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
-  $wp_customize->add_setting('my_control_banner1');
+  $fields = [
+    'banner_section_name_under' => [
+      'label'       => '',
+      'type'        => 'hidden',
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
+  $wp_customize->add_setting('banner_section_image1');
   $wp_customize->add_control(
     new WP_Customize_Image_Control(
       $wp_customize,
-      'my_control_banner1',
-      array(
-        'label'    => 'バナー1',
-        'section'  => $section_name,
-        'settings' => 'my_control_banner1',
-        'type'     => 'hidden',
-      )
-    )
-  );
-  $wp_customize->add_setting('banner_section_title1');
-  $wp_customize->add_control(
-    new WP_Customize_Image_Control(
-      $wp_customize,
-      'my_control_image',
+      'my_control_image1',
       array(
         'label'    => 'バナー1 画像',
         'section'  => $section_name,
-        'settings' => 'banner_section_title1',
+        'settings' => 'banner_section_image1',
       )
     )
   );
@@ -297,12 +340,25 @@ function banner_customizer($wp_customize){
   $wp_customize->add_control(
     new WP_Customize_Control(
       $wp_customize,
-      'my_control_text',
+      'my_control_utl1',
       array(
         'label' => 'バナー1 URL',
         'section'  => $section_name,
         'settings' => 'banner_section_url1',
         'type'     => 'url',
+      )
+    )
+  );
+  $wp_customize->add_setting('banner_section_title1');
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'my_control_text1',
+      array(
+        'label' => 'バナー1 タイトル',
+        'section'  => $section_name,
+        'settings' => 'banner_section_title1',
+        'type'     => 'text',
       )
     )
   );
@@ -320,7 +376,7 @@ function banner_customizer($wp_customize){
       )
     )
   );
-  $wp_customize->add_setting('banner_section_title2');
+  $wp_customize->add_setting('banner_section_image2');
   $wp_customize->add_control(
     new WP_Customize_Image_Control(
       $wp_customize,
@@ -328,7 +384,7 @@ function banner_customizer($wp_customize){
       array(
         'label'    => 'バナー2 画像',
         'section'  => $section_name,
-        'settings' => 'banner_section_title2',
+        'settings' => 'banner_section_image2',
       )
     )
   );
@@ -336,7 +392,7 @@ function banner_customizer($wp_customize){
   $wp_customize->add_control(
     new WP_Customize_Control(
       $wp_customize,
-      'my_control_text2',
+      'my_control_url2',
       array(
         'label' => 'バナー2 URL',
         'section'  => $section_name,
@@ -345,9 +401,98 @@ function banner_customizer($wp_customize){
       )
     )
   );
+  $wp_customize->add_setting('banner_section_title2');
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'my_control_text2',
+      array(
+        'label' => 'バナー2 タイトル',
+        'section'  => $section_name,
+        'settings' => 'banner_section_title2',
+        'type'     => 'text',
+      )
+    )
+  );
+
+  $wp_customize->add_setting('my_control_banner3');
+  $wp_customize->add_control(
+    new WP_Customize_Image_Control(
+      $wp_customize,
+      'my_control_banner3',
+      array(
+        'label'    => 'バナー3',
+        'section'  => $section_name,
+        'settings' => 'my_control_banner3',
+        'type'     => 'hidden',
+      )
+    )
+  );
+  $wp_customize->add_setting('banner_section_image3');
+  $wp_customize->add_control(
+    new WP_Customize_Image_Control(
+      $wp_customize,
+      'my_control_image3',
+      array(
+        'label'    => 'バナー3 画像',
+        'section'  => $section_name,
+        'settings' => 'banner_section_image3',
+      )
+    )
+  );
+  $wp_customize->add_setting('banner_section_url3');
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'my_control_url3',
+      array(
+        'label' => 'バナー3 URL',
+        'section'  => $section_name,
+        'settings' => 'banner_section_url3',
+        'type'     => 'url',
+      )
+    )
+  );
+  $wp_customize->add_setting('banner_section_title3');
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'my_control_text3',
+      array(
+        'label' => 'バナー3 タイトル',
+        'section'  => $section_name,
+        'settings' => 'banner_section_title3',
+        'type'     => 'text',
+      )
+    )
+  );
 }
 
-function work_customizer($wp_customize){
+include_once ABSPATH . 'wp-includes/class-wp-customize-control.php';
+class WP_Customize_Range_Control extends WP_Customize_Control
+{
+  public $type = 'custom_range';
+  public function render_content()
+  {
+?>
+    <label>
+      <?php if (!empty($this->label)) : ?>
+        <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
+      <?php endif; ?>
+      <input data-input-type="range" type="range" <?php $this->input_attrs(); ?> value="<?php echo esc_attr($this->value()); ?>" <?php $this->link(); ?> oninput="jQuery(this).next().text( jQuery(this).val() )" />
+      <div class="cs-range-value"><?php echo esc_attr($this->value()); ?>
+        <?php get_theme_mod('work_view_count'); ?>
+      </div>
+      <?php if (!empty($this->description)) : ?>
+        <span class="description customize-control-description"><?php echo $this->description; ?></span>
+      <?php endif; ?>
+    </label>
+<?php
+  }
+}
+
+function work_customizer($wp_customize)
+{
   $categories = get_categories(array(
     'hide_empty' => 0,
     'orderby' => 'name',
@@ -383,6 +528,70 @@ function work_customizer($wp_customize){
       'label'       => '記事カテゴリー',
       'type'        => 'select',
       'choices'     => $category,
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
+  $wp_customize->add_setting('work_view_count');
+  $wp_customize->add_control(
+    new WP_Customize_Range_Control(
+      $wp_customize,
+      'work_view_count',
+      array(
+        'label'    => '1度に表示する記事数',
+        'section'  => $section_name,
+        'settings' => 'work_view_count',
+        'type'     => 'range',
+        'input_attrs' => array(
+          'min'     => 3,
+          'max'     => 12,
+          'step'    => 1,
+          'default' => 6,
+        ),
+      )
+    )
+  );
+}
+
+function share_customizer($wp_customize)
+{
+  $prefix = 'share';
+  $option_name = "{$prefix}_options";
+  $section_name = "{$prefix}_section";
+  $wp_customize->add_section(
+    $section_name,
+    [
+      'title'       => 'SNSシェア設定',
+      'priority'    => 25,
+    ]
+  );
+  $wp_customize->add_setting('share_ogp');
+  $wp_customize->add_control(
+    new WP_Customize_Image_Control(
+      $wp_customize,
+      'my_control_share',
+      array(
+        'label'    => 'OGP画像',
+        'description' => 'TOPページがシェアされた時の画像',
+        'section'  => $section_name,
+        'settings' => 'share_ogp',
+      )
+    )
+  );
+  $fields = [
+    'share_twitter_card' => [
+      'label'       => 'Twitterカードタイプ',
+      'type'        => 'select',
+      'description' => 'Twitterでシェアしたときのリンクの表示方法を選べます',
+      'choices'     => array(
+        'summary'             => 'コンパクト',
+        'summary_large_image' => 'ラージ',
+      ),
+    ],
+    'share_facebook_id' => [
+      'label'       => 'Facebookの管理者ID(15桁の数字)',
+      'type'        => 'text',
+      'description' => 'FacebookでシェアしたときのリンクのOGPを取得するのに必要なIDです',
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
@@ -424,11 +633,25 @@ function add_customizer_control($wp_customize, $fields, $option_name, $section_n
         'section'     => $section_name,
         'type'        => !empty($value['type']) ? $value['type'] : 'textarea',
         'description' => !empty($value['description']) ? $value['description'] : null,
-        'choices'     => !empty($value['choices']) ? $value['choices'] : null
+        'choices'     => !empty($value['choices']) ? $value['choices'] : null,
       ]
     );
   }
 }
+
+// WordPress標準のサイト内検索を無効化
+function search_404($query)
+{
+  if (is_search()) {
+    // 404ページを返す
+    $query->set_404();
+    // 404コードを返す
+    status_header(404);
+    // キャッシュの無効化
+    nocache_headers();
+  }
+}
+add_filter('parse_query', 'search_404');
 
 /**
  * 外部リンク対応リンクカードのショートコード
@@ -466,13 +689,6 @@ function show_Linkcard($atts)
   $screenShot = 'https://s.wordpress.com/mshots/v1/' . urlencode(esc_url(rtrim($url, '/'))) . '?w=' . $img_width . '&h=' . $img_height . '';
   $xLink_img = '<img src="' . $screenShot . '" width="' . $img_width . '" />';
 
-  //ファビコンGET
-  $host = parse_url($url)['host'];
-  $searchFavcon = 'https://www.google.com/s2/favicons?domain=' . $host;
-  if ($searchFavcon) {
-    $favicon = '<img class="favicon" src="' . $searchFavcon . '">';
-  }
-
   //HTML出力
   $linkcard = '
   <div class="blogcard ex">
@@ -496,9 +712,43 @@ add_shortcode("linkcard", "show_Linkcard");
  */
 get_template_part('include/html-tag-setting');
 
+
+/**
+ * ページネーションの表示件数をカスタマイズ
+ */
+add_action('pre_get_posts', function ($query) {
+  if (is_search() || is_category() || is_tag()) {
+    if (!empty(get_theme_mod('work_view_count'))) {
+      $query->set('posts_per_page', get_theme_mod('work_view_count'));
+    } else {
+      $query->set('posts_per_page', 6);
+    }
+    return;
+  }
+});
+
+/**
+ * ページネーションの404回避
+ */
+add_filter('redirect_canonical','my_disable_redirect_canonical');
+function my_disable_redirect_canonical( $redirect_url )
+{
+  if ( is_archive() ){
+    $subject = $redirect_url;
+    $pattern = '/\/page\//'; // URLに「/page/」があるかチェック
+    preg_match($pattern, $subject, $matches);
+
+    if ($matches){
+    //リクエストURLに「/page/」があれば、リダイレクトしない。
+    $redirect_url = false;
+    return $redirect_url;
+    }
+  }
+}
 //テーマアップデート
 // https://kuni-chan.com/theme.json
 require 'plugin-update-checker/plugin-update-checker.php';
+
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(

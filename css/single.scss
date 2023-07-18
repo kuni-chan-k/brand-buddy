@@ -1,0 +1,138 @@
+// 投稿ページ・固定ページ共通
+
+// 投稿ページ
+.main {
+  display: block;
+}
+
+#postHeader {
+  h1 {
+    font-size: 32px;
+    @media screen and (max-width: 1024px) {
+          font-size: 27px;
+    }
+  }
+
+  // サムネイル
+  #postThumb {
+    margin-bottom: 24px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+#postContent {
+  font-size: 16px;;
+
+  p,cite,ol,ul, table, figure {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  table {
+    margin-bottom: 12px;
+  }
+
+  a {
+    color: #0017CC;
+    text-decoration: underline;
+    text-underline-offset: 0.42rem;
+
+    :hover {
+      color: #010082;
+    }
+    :visited {
+      color: #010082;
+    }
+  }
+
+  .wp-block-button a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  p,li,ol {
+    a{
+      text-underline-offset: 0.36rem;
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5 {
+    box-sizing: border-box;
+    line-height: 1.3;
+    margin: 48px 0 24px !important;
+  }
+
+  h2 {
+    padding: 0.5em 0;
+    border-top: solid 3px #222;
+    border-bottom: solid 3px #222;
+  }
+
+  h3 {
+    padding: 1rem 2rem;
+    border-left: 6px double #222;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 1.2rem;
+  }
+
+  ol {
+    list-style-type: decimal;
+    padding-left: 1.2rem;
+  }
+
+  // 画像
+  .wp-block-image {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    .wp-element-caption{
+      text-align: center;
+      font-size: 1.35rem;
+    }
+  }
+
+  // 引用
+  .wp-block-quote {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: inline-block;
+    padding: 0 24px;
+    background: #F4F4F4;
+    border-radius: 24px;
+    cite {
+      display: block;
+    }
+  }
+
+  // 埋め込み
+  .wp-block-embed {
+    margin: 16px auto;
+
+    .wp-block-embed__wrapper {
+      div,iframe {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  .is-provider-youtube {
+    .wp-block-embed__wrapper {
+      aspect-ratio: 16 / 9;
+      iframe {
+        width: 100%;
+        height: 100%; 
+      }
+    }
+  }
+
+}

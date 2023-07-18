@@ -48,6 +48,13 @@
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/svg/line_b.svg" alt="line" />
         </a>
       <?php endif; ?>
+
+      <?php if (!empty(get_theme_mod('sns_github'))) : ?>
+        <a class="main__sns__github" href="<?php echo esc_html(get_theme_mod('sns_github', '')) ?>" target="_blank">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/svg/github-mark.svg" alt="line" />
+        </a>
+      <?php endif; ?>
+
     </div>
 
     <!-- <div class="main__news">
@@ -68,20 +75,44 @@
       </ul>
     </div> -->
 
-    <?php if (!empty(get_theme_mod('banner_section_name'))) : ?>
+    <?php if (get_theme_mod('banner_section_view') === true) : ?>
       <section class="main__banner">
-        <h3 class="main__section__title">運営メディア</h3>
-        <div class="main__banner__wrapper">
-          <article class="main__banner__wrapper__item">
-            <a href="https://www.kuni-chan.com/triathlon-challenger/">
-              <img src="https://kuni-chan.com/wp-content/uploads/2023/06/banner1.png" alt="トライアスロン挑戦レポ" />
-            </a>
-          </article>
-        </div>
+        <h3 class="main__section__title"><?php echo !empty(get_theme_mod('banner_section_name')) ? get_theme_mod('banner_section_name') : 'バナー' ?></h3>
+
+        <?php if (!empty(get_theme_mod('banner_section_image1')) and !empty(get_theme_mod('banner_section_url1'))) : ?>
+          <div class="main__banner__wrapper">
+            <article class="main__banner__wrapper__item">
+              <a href="<?php echo get_theme_mod('banner_section_url1') ?>">
+                <img src="<?php echo get_theme_mod('banner_section_image1') ?>" alt="<?php echo get_theme_mod('banner_section_title1') ?>" />
+              </a>
+            </article>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty(get_theme_mod('banner_section_image2')) and !empty(get_theme_mod('banner_section_url2'))) : ?>
+          <div class="main__banner__wrapper">
+            <article class="main__banner__wrapper__item">
+              <a href="<?php echo get_theme_mod('banner_section_url2') ?>">
+                <img src="<?php echo get_theme_mod('banner_section_image2') ?>" alt="<?php echo get_theme_mod('banner_section_title2') ?>" />
+              </a>
+            </article>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty(get_theme_mod('banner_section_image3')) and !empty(get_theme_mod('banner_section_url3'))) : ?>
+          <div class="main__banner__wrapper">
+            <article class="main__banner__wrapper__item">
+              <a href="<?php echo get_theme_mod('banner_section_url3') ?>">
+                <img src="<?php echo get_theme_mod('banner_section_image3') ?>" alt="<?php echo get_theme_mod('banner_section_title3') ?>" />
+              </a>
+            </article>
+          </div>
+        <?php endif; ?>
+
       </section>
     <?php endif; ?>
 
-    <?php if ((get_theme_mod('work_section_view') === true)) : ?>
+    <?php if (get_theme_mod('work_section_view') === true) : ?>
       <section class="main__work">
         <h3 class="main__section__title"><?php echo !empty(get_theme_mod('work_section_name')) ? get_theme_mod('work_section_name') : '実績' ?></h3>
 
@@ -93,23 +124,16 @@
 
         <div class="main__work__wrapper">
           <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-              <article class="main__work__wrapper__item">
-                <a href="<?php the_permalink(); ?>">
-
-                  <?php if (has_post_thumbnail()) : ?>
-                    <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo get_the_title(); ?>">
-                  <?php else : ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/default_thumbnail.png" alt="">
-                  <?php endif; ?>
-                  <div class="main__work__post__title">
-                    <h3><?php echo get_the_title(); ?></h3>
-                    <span class="post-date-modified"><time datetime=<?php echo get_the_modified_time('Y-m-d'); ?>>最終更新:<?php echo get_the_modified_time('Y/m/d'); ?></time></span>
-                  </div>
-                </a>
-              </article>
+              <?php get_template_part('object/work_card'); ?>
             <?php endwhile; ?>
         </div>
+
+        <?php if (!empty(get_theme_mod('work_view_count')) && (wp_count_posts()->publish > get_theme_mod('work_view_count'))) : ?>
+          <a href="<?php echo home_url('/' . get_theme_mod('work_category')); ?>" class="more_read_link">
+            もっと見る
+          </a>
+        <?php endif; ?>
+
       <?php else : ?>
         <div class="main__work__wrapper">
           <p>記事が見つかりません</p>
@@ -118,21 +142,10 @@
       </section>
     <?php endif; ?>
 
-    <section class="main__contact">
+    <!-- <section class="main__contact">
       <h3 class="main__section__title">お問い合わせ</h3>
       <p>上記の各種SNSからご連絡ください｡</p>
-    </section>
-
-    <!-- <?php
-          if (have_posts()) :
-            while (have_posts()) :
-              the_post();
-          ?>
-        <?php the_content(); ?>
-    <?php
-            endwhile;
-          endif;
-    ?> -->
+    </section> -->
 
   </main>
 </div>
