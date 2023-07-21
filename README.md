@@ -1,2 +1,2 @@
-# bb-theme
+# brand-buddy
 Wordpressのテーマ「BrandBuddy」のリポジトリ

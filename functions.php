@@ -845,9 +845,9 @@ require 'plugin-update-checker/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-  'https://github.com/kuni-chan-k/bb-theme/',
+  'https://github.com/kuni-chan-k/brand-buddy/',
   __FILE__,
-  'unique-plugin-or-theme-slug'
+  'brand-buddy'
 );
 
 //Set the branch that contains the stable release.
