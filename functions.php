@@ -33,7 +33,7 @@ function my_meta_ogp()
   }
 
   // Facebook APP ID
-  if(!empty(get_theme_mod('share_facebook_id'))) {
+  if (!empty(get_theme_mod('share_facebook_id'))) {
     $facebook_app_id = get_theme_mod('share_facebook_id');
   } else {
     $facebook_app_id = '';
@@ -51,13 +51,11 @@ function my_meta_ogp()
     $ogp_description = mb_substr(get_the_excerpt(), 0, 100);
     $ogp_url = get_permalink();
     wp_reset_postdata();
-
   } elseif (is_front_page() || is_home()) {
     // トップページ
     $ogp_title = get_bloginfo('name');
     $ogp_description = get_bloginfo('description');
     $ogp_url = home_url();
-
   } elseif (is_category()) {
     // カテゴリーアーカイブ
     $cat = get_the_category();
@@ -65,7 +63,6 @@ function my_meta_ogp()
     $ogp_description = ($cat[0]->description) ? $cat[0]->description : get_bloginfo('description');
     $ogp_url = get_category_link($cat[0]->term_id);
     wp_reset_postdata();
-
   } elseif (is_tag()) {
     // タグーアーカイブ
     $tag = get_the_tags();
@@ -73,7 +70,6 @@ function my_meta_ogp()
     $ogp_description = ($tag[0]->description) ? $tag[0]->description : get_bloginfo('description');
     $ogp_url = get_tag_link($tag[0]->term_id);
     wp_reset_postdata();
-
   } elseif (is_404()) {
     $ogp_title = 'ページが見つかりませんでした | ' . get_bloginfo('name');
     $ogp_description = 'お探しのページが見つかりませんでした';
@@ -114,6 +110,7 @@ add_action('wp_head', 'my_meta_ogp');
  */
 function my_theme_customize_register($wp_customize)
 {
+  design_customizer($wp_customize);
   name_customizer($wp_customize);
   sns_customizer($wp_customize);
   banner_customizer($wp_customize);
@@ -121,6 +118,78 @@ function my_theme_customize_register($wp_customize)
   share_customizer($wp_customize);
 }
 add_action('customize_register', 'my_theme_customize_register');
+
+function design_customizer($wp_customize)
+{
+  $prefix = 'design';
+  $option_name = "{$prefix}_options";
+  $section_name = "{$prefix}_section";
+  $wp_customize->add_section(
+    $section_name,
+    [
+      'title'       => 'デザイン設定',
+      'priority'    => 22,
+    ]
+  );
+  $wp_customize->add_setting('main_border_thickness');
+  $wp_customize->add_control(
+    new WP_Customize_Range_Control(
+      $wp_customize,
+      'main_border_thickness',
+      array(
+        'label'    => 'メインエリアの枠線の太さ',
+        'section'  => $section_name,
+        'settings' => 'main_border_thickness',
+        'description' => '枠線をなくしたい場合は枠線の太さを0にしてください',
+        'type'     => 'range',
+        'input_attrs' => array(
+          'min'     => 0,
+          'max'     => 12,
+          'step'    => 1,
+          'default' => 6,
+        ),
+      )
+    )
+  );
+
+  $wp_customize->add_setting('border_color', array(
+    'default' => '#000',
+  ));
+  $wp_customize->add_control(
+    new WP_Customize_Color_Control(
+      $wp_customize,
+      'border_color',
+      array(
+        'label' => '枠線の色',
+        'section' => $section_name,
+        'settings' => 'border_color',
+        'description' => '「もっと見る」ボタンの枠の色にも反映されます',
+      )
+    )
+  );
+  $fields = [
+    'border_under' => [
+      'label'       => '',
+      'type'        => 'hidden',
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
+  $wp_customize->add_setting('main_background_color', array(
+    'default' => '#fff',
+  ));
+  $wp_customize->add_control(
+    new WP_Customize_Color_Control(
+      $wp_customize,
+      'main_background_color',
+      array(
+        'label' => '枠外の背景色',
+        'section' => $section_name,
+        'settings' => 'main_background_color',
+      )
+    )
+  );
+}
 
 function name_customizer($wp_customize)
 {
@@ -131,7 +200,7 @@ function name_customizer($wp_customize)
     $section_name,
     [
       'title'       => '名前エリア設定',
-      'priority'    => 22,
+      'priority'    => 23,
     ]
   );
   $wp_customize->add_setting('top_icon');
@@ -175,7 +244,7 @@ function sns_customizer($wp_customize)
     $section_name,
     [
       'title'       => 'SNS設定',
-      'priority'    => 23,
+      'priority'    => 24,
     ]
   );
   $fields = [
@@ -282,13 +351,6 @@ function sns_customizer($wp_customize)
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
-  $fields = [
-    'sns_github_under' => [
-      'label'       => '',
-      'type'        => 'hidden',
-    ],
-  ];
-  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
 }
 
 function banner_customizer($wp_customize)
@@ -300,7 +362,7 @@ function banner_customizer($wp_customize)
     $section_name,
     [
       'title'           => 'バナーエリア設定',
-      'priority'        => 24,
+      'priority'        => 25,
     ]
   );
   $fields = [
@@ -487,7 +549,7 @@ class WP_Customize_Range_Control extends WP_Customize_Control
         <span class="description customize-control-description"><?php echo $this->description; ?></span>
       <?php endif; ?>
     </label>
-<?php
+  <?php
   }
 }
 
@@ -510,7 +572,7 @@ function work_customizer($wp_customize)
     $section_name,
     [
       'title'       => '実績エリア設定',
-      'priority'    => 25,
+      'priority'    => 26,
     ]
   );
   $fields = [
@@ -541,12 +603,13 @@ function work_customizer($wp_customize)
         'label'    => '1度に表示する記事数',
         'section'  => $section_name,
         'settings' => 'work_view_count',
+        'description' => 'スマホ表示時は1列､それ以外では2列表示になります',
         'type'     => 'range',
         'input_attrs' => array(
-          'min'     => 3,
+          'min'     => 2,
           'max'     => 12,
           'step'    => 1,
-          'default' => 6,
+          'default' => 4,
         ),
       )
     )
@@ -562,7 +625,7 @@ function share_customizer($wp_customize)
     $section_name,
     [
       'title'       => 'SNSシェア設定',
-      'priority'    => 25,
+      'priority'    => 27,
     ]
   );
   $wp_customize->add_setting('share_ogp');
@@ -639,7 +702,37 @@ function add_customizer_control($wp_customize, $fields, $option_name, $section_n
   }
 }
 
-// WordPress標準のサイト内検索を無効化
+/**
+ * テーマカスタマイザーで設定した線の太さ､色を反映
+ */
+function customizer_color()
+{
+  $border_color = get_theme_mod('border_color', '#000');
+  $main_border_thickness = get_theme_mod('main_border_thickness', 6);
+  $main_background_color = get_theme_mod('main_background_color', 6);
+  ?>
+  <style type="text/css">
+    .container {
+      background-color: <?php echo $main_background_color; ?>;
+    }
+
+    .main {
+      background-color: <?php echo $border_color; ?>;
+      --matched-radius-padding: <?php echo $main_border_thickness . 'px'; ?>;
+    }
+
+    .more_read_link {
+      border: 4px solid <?php echo $border_color; ?>;
+    }
+  </style>
+<?php
+}
+add_action('wp_head', 'customizer_color');
+
+/**
+ * WordPress標準のサイト内検索を無効化
+ */
+
 function search_404($query)
 {
   if (is_search()) {
@@ -730,18 +823,18 @@ add_action('pre_get_posts', function ($query) {
 /**
  * ページネーションの404回避
  */
-add_filter('redirect_canonical','my_disable_redirect_canonical');
-function my_disable_redirect_canonical( $redirect_url )
+add_filter('redirect_canonical', 'my_disable_redirect_canonical');
+function my_disable_redirect_canonical($redirect_url)
 {
-  if ( is_archive() ){
+  if (is_archive()) {
     $subject = $redirect_url;
     $pattern = '/\/page\//'; // URLに「/page/」があるかチェック
     preg_match($pattern, $subject, $matches);
 
-    if ($matches){
-    //リクエストURLに「/page/」があれば、リダイレクトしない。
-    $redirect_url = false;
-    return $redirect_url;
+    if ($matches) {
+      //リクエストURLに「/page/」があれば、リダイレクトしない。
+      $redirect_url = false;
+      return $redirect_url;
     }
   }
 }
