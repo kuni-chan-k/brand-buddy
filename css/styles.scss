@@ -81,12 +81,10 @@ h2 {
 }
 
 h3 {
-  margin: 0 12px;
+  margin: 32px 12px;
   font-size: 28px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  margin-top: 16px;
-  margin-bottom: 16px;
   @media screen and (max-width: 1024px) {
     font-size: 24px;
   }
@@ -115,10 +113,10 @@ h3 {
     background: #fff;
     padding: 24px 48px 48px;
     border-radius: var(--matched-radius-inner-size);
-    z-index: 0;
-    display: flex;
-    flex-flow: column;
-    gap: 48px;
+    // z-index: 0;
+    // display: flex;
+    // flex-flow: column;
+    // gap: 48px;
     @media screen and (max-width: 1024px) {
       padding: 24px 24px 48px;
     }
@@ -127,7 +125,7 @@ h3 {
   .main__head {
     position: relative;
     top: -72px;
-    margin-bottom: -72px;
+    margin-bottom: -34px;
     display: flex;
     flex-flow: column;
 
@@ -165,13 +163,14 @@ h3 {
 
   .main__introduction {
     text-align: center;
+    margin-bottom: 60px;
   }
 
   .main__sns {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
-    margin: 0 auto;
+    margin: 0 auto 48px;
     justify-content: center;
     @media screen and (max-width: 480px) {
       gap: 32px;
@@ -209,6 +208,7 @@ h3 {
   }
 
   .main__news {
+    margin-bottom: 60px;
     .posts-wrapper{
       li {
         border-bottom: 0.5px solid #919191;
@@ -241,11 +241,16 @@ h3 {
   }
 
   .main__banner {
+    margin-bottom: 60px;
     .main__banner__wrapper {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap:16px;
+      gap:24px;
+      width: 100%;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
       .main__banner__wrapper__item {
         box-shadow: 0 4px 8px 0 rgba(0,0,0,.15);
         transition: all .3s ease;
@@ -270,6 +275,7 @@ h3 {
   }
 
   .main__work {
+    margin-bottom: 60px;
     .main__work__wrapper {
       display: grid;
       gap:32px;
@@ -293,6 +299,13 @@ h3 {
         box-shadow: 0 6px 10px 0 rgba(0,0,0,.15);
       }
 
+      .post-link-area {
+        display: flex;
+        flex-flow: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+
       img {
         width: 100%;
         border-radius: 16px 16px 0 0;
@@ -301,8 +314,8 @@ h3 {
       a {
         display: block;
         height: fit-content;
+        text-decoration: none;
       }
-
     }
 
     .main__work__post__title {
@@ -323,6 +336,7 @@ h3 {
 }
 
 // タグ・最終更新日付エリア
+.post-tag-area,
 .main__work__post__meta {
   padding: 0 16px 16px;
 }
@@ -335,15 +349,15 @@ h3 {
   }
 
   a {
-      font-size: 14px;
-      color: #0017CC;
-      text-decoration: underline;
-      &::before {
-        content: "#";
-      }
-      &:hover {
-        color: #010082;
-      }
+    font-size: 14px;
+    color: #0017CC;
+    text-decoration: underline !important;
+    &::before {
+      content: "#";
+    }
+    &:hover {
+      color: #010082;
+    }
   }
 }
 
@@ -390,7 +404,7 @@ h3 {
 // 404ページ
 .notfound {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 60px;
 }
 
 // グラデーション
@@ -475,6 +489,7 @@ h3 {
   border-radius: 16px;
   border: 4px solid #333;
   transition: all .3s ease;
+  text-decoration: none;
   &:hover {
     transform: translateY(-5px);
   }

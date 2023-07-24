@@ -2,7 +2,7 @@
 
 <?php $cat = get_the_category(); ?>
 <div class="container">
-  <main class="main single">
+  <main class="main">
     <div class="main__inner">
         <?php get_template_part('object/main_head'); ?>
 

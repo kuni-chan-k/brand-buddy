@@ -9,6 +9,17 @@ function customizer_script()
 }
 add_action('customize_controls_enqueue_scripts', 'customizer_script');
 
+/**
+ * カスタマイザーに任意のCSSを読み込ませる
+ */
+function block_editor_script()
+{
+  // ブロックエディタ用スタイル機能をテーマに追加
+  add_theme_support('editor-styles');
+  // ブロックエディタ用CSSの読み込み
+  add_editor_style('/css/block.css');
+}
+add_action('after_setup_theme', 'block_editor_script');
 
 // すべてのアイキャッチ画像の有効化
 add_theme_support('post-thumbnails');
@@ -54,7 +65,7 @@ function my_meta_ogp()
   } elseif (is_front_page() || is_home()) {
     // トップページ
     $ogp_title = get_bloginfo('name');
-    $ogp_description = get_bloginfo('description');
+    $ogp_description = get_bloginfo('description') ?? '';
     $ogp_url = home_url();
   } elseif (is_category()) {
     // カテゴリーアーカイブ
@@ -767,13 +778,13 @@ function show_Linkcard($atts)
   $graph = OpenGraph::fetch($url);
 
   //OGPタグからタイトルを取得
-  $Link_title = $graph->title;
+  $Link_title = $graph->title ?? '';
   if (!empty($title)) {
     $Link_title = $title; //title=""の入力がある場合はそちらを優先
   }
 
   //OGPタグからdescriptionを取得
-  $Link_description = wp_trim_words($graph->description, 60, '…'); //文字数は任意で変更
+  $Link_description = $graph->description ? wp_trim_words($graph->description, 60, '…') : '';
   if (!empty($excerpt)) {
     $Link_description = $excerpt; //値を取得できない時は手動でexcerpt=""を入力
   }
