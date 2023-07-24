@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="container">
-  <main class="main single">
+  <main class="main">
     <div class="main__inner">
       <?php get_template_part('object/main_head'); ?>
       <?php get_template_part('object/breadcrumb'); ?>

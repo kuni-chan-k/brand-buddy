@@ -80,35 +80,31 @@
         <section class="main__banner">
           <h3 class="main__section__title"><?php echo !empty(get_theme_mod('banner_section_name')) ? get_theme_mod('banner_section_name') : 'バナー' ?></h3>
 
-          <?php if (!empty(get_theme_mod('banner_section_image1')) and !empty(get_theme_mod('banner_section_url1'))) : ?>
-            <div class="main__banner__wrapper">
+          <div class="main__banner__wrapper">
+            <?php if (!empty(get_theme_mod('banner_section_image1')) and !empty(get_theme_mod('banner_section_url1'))) : ?>
               <article class="main__banner__wrapper__item">
                 <a href="<?php echo get_theme_mod('banner_section_url1') ?>">
                   <img src="<?php echo get_theme_mod('banner_section_image1') ?>" alt="<?php echo get_theme_mod('banner_section_title1') ?>" />
                 </a>
               </article>
-            </div>
-          <?php endif; ?>
+            <?php endif; ?>
 
-          <?php if (!empty(get_theme_mod('banner_section_image2')) and !empty(get_theme_mod('banner_section_url2'))) : ?>
-            <div class="main__banner__wrapper">
-              <article class="main__banner__wrapper__item">
-                <a href="<?php echo get_theme_mod('banner_section_url2') ?>">
-                  <img src="<?php echo get_theme_mod('banner_section_image2') ?>" alt="<?php echo get_theme_mod('banner_section_title2') ?>" />
-                </a>
-              </article>
-            </div>
-          <?php endif; ?>
+            <?php if (!empty(get_theme_mod('banner_section_image2')) and !empty(get_theme_mod('banner_section_url2'))) : ?>
+                <article class="main__banner__wrapper__item">
+                  <a href="<?php echo get_theme_mod('banner_section_url2') ?>">
+                    <img src="<?php echo get_theme_mod('banner_section_image2') ?>" alt="<?php echo get_theme_mod('banner_section_title2') ?>" />
+                  </a>
+                </article>
+            <?php endif; ?>
 
-          <?php if (!empty(get_theme_mod('banner_section_image3')) and !empty(get_theme_mod('banner_section_url3'))) : ?>
-            <div class="main__banner__wrapper">
-              <article class="main__banner__wrapper__item">
-                <a href="<?php echo get_theme_mod('banner_section_url3') ?>">
-                  <img src="<?php echo get_theme_mod('banner_section_image3') ?>" alt="<?php echo get_theme_mod('banner_section_title3') ?>" />
-                </a>
-              </article>
-            </div>
-          <?php endif; ?>
+            <?php if (!empty(get_theme_mod('banner_section_image3')) and !empty(get_theme_mod('banner_section_url3'))) : ?>
+                <article class="main__banner__wrapper__item">
+                  <a href="<?php echo get_theme_mod('banner_section_url3') ?>">
+                    <img src="<?php echo get_theme_mod('banner_section_image3') ?>" alt="<?php echo get_theme_mod('banner_section_title3') ?>" />
+                  </a>
+                </article>
+            <?php endif; ?>
+          </div>
 
         </section>
       <?php endif; ?>

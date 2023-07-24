@@ -10,6 +10,9 @@
     font-size: 27px;
   }
 }
+#postHeader .post-tag-area {
+  padding-left: 0 !important;
+}
 #postHeader #postThumb {
   margin-bottom: 24px;
 }
