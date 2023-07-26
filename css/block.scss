@@ -1,7 +1,3 @@
-.editor-styles-wrapper {
-  font-family: Noto Sans JP,-apple-system,blinkmacsystemfont,Segoe UI,Hiragino Kaku Gothic ProN,BIZ UDPGothic,meiryo,sans-serif !important;
-}
-
 .interface-interface-skeleton__secondary-sidebar + .interface-interface-skeleton__notices + .interface-interface-skeleton__content .editor-styles-wrapper {
   padding: 0 30px;
 }
@@ -12,8 +8,5 @@
   max-width: 740px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.block-editor-default-block-appender__content {
-
+  font-family: Noto Sans JP,-apple-system,blinkmacsystemfont,Segoe UI,Hiragino Kaku Gothic ProN,BIZ UDPGothic,meiryo,sans-serif !important;
 }

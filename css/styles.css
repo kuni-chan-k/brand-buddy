@@ -42,15 +42,28 @@ body {
   min-height: 56px;
   text-align: center;
   background-color: #f9f9f9;
-  padding: 16px 0;
+  padding: 16px 24px;
+  display: flex;
+}
+.footer .footer_inner {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .footer .footer__container {
   max-width: 1024px;
   margin: 0 auto;
   padding: 64px 24px;
 }
+.footer #footerMenuList {
+  display: inline-flex;
+  gap: 16px;
+  font-size: 14px;
+}
 .footer small {
-  text-align: center;
   font-size: 14px;
 }
 

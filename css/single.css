@@ -21,34 +21,53 @@
   height: 100%;
 }
 
+.wp-block-post-content,
 #postContent {
   font-size: 16px;
 }
-#postContent p, #postContent cite, #postContent ol, #postContent ul, #postContent table, #postContent figure {
+.wp-block-post-content p, .wp-block-post-content cite, .wp-block-post-content ol, .wp-block-post-content ul, .wp-block-post-content table, .wp-block-post-content figure,
+#postContent p,
+#postContent cite,
+#postContent ol,
+#postContent ul,
+#postContent table,
+#postContent figure {
   margin-top: 24px;
   margin-bottom: 24px;
 }
+.wp-block-post-content table,
 #postContent table {
   margin-bottom: 12px;
 }
+.wp-block-post-content a,
 #postContent a {
   color: #0017CC;
   text-decoration: underline;
   text-underline-offset: 0.42rem;
 }
+.wp-block-post-content a :hover,
 #postContent a :hover {
   color: #010082;
 }
+.wp-block-post-content a :visited,
 #postContent a :visited {
   color: #010082;
 }
+.wp-block-post-content .wp-block-button a,
 #postContent .wp-block-button a {
   color: #fff;
   text-decoration: none;
 }
-#postContent p a, #postContent li a, #postContent ol a {
+.wp-block-post-content p a, .wp-block-post-content li a, .wp-block-post-content ol a,
+#postContent p a,
+#postContent li a,
+#postContent ol a {
   text-underline-offset: 0.36rem;
 }
+.wp-block-post-content h2,
+.wp-block-post-content h3,
+.wp-block-post-content h4,
+.wp-block-post-content h5,
 #postContent h2,
 #postContent h3,
 #postContent h4,
@@ -57,33 +76,47 @@
   line-height: 1.3;
   margin: 48px 0 24px !important;
 }
+.wp-block-post-content h2,
 #postContent h2 {
   padding: 0.5em 0;
   border-top: solid 3px #222;
   border-bottom: solid 3px #222;
 }
+.wp-block-post-content h3,
 #postContent h3 {
   padding: 1rem 2rem;
   border-left: 6px double #222;
 }
+.wp-block-post-content h4,
+#postContent h4 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+.wp-block-post-content ul,
 #postContent ul {
   list-style-type: disc;
   padding-left: 1.2rem;
 }
+.wp-block-post-content ol,
 #postContent ol {
   list-style-type: decimal;
   padding-left: 1.2rem;
 }
+.wp-block-post-content .wp-block-image,
 #postContent .wp-block-image {
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 24px;
   margin-bottom: 24px;
 }
+.wp-block-post-content .wp-block-image .wp-element-caption,
 #postContent .wp-block-image .wp-element-caption {
   text-align: center;
   font-size: 1.35rem;
 }
+.wp-block-post-content .wp-block-quote,
 #postContent .wp-block-quote {
   margin-top: 24px;
   margin-bottom: 24px;
@@ -92,20 +125,26 @@
   background: #F4F4F4;
   border-radius: 24px;
 }
+.wp-block-post-content .wp-block-quote cite,
 #postContent .wp-block-quote cite {
   display: block;
 }
+.wp-block-post-content .wp-block-embed,
 #postContent .wp-block-embed {
   margin: 16px auto;
 }
-#postContent .wp-block-embed .wp-block-embed__wrapper div, #postContent .wp-block-embed .wp-block-embed__wrapper iframe {
+.wp-block-post-content .wp-block-embed .wp-block-embed__wrapper div, .wp-block-post-content .wp-block-embed .wp-block-embed__wrapper iframe,
+#postContent .wp-block-embed .wp-block-embed__wrapper div,
+#postContent .wp-block-embed .wp-block-embed__wrapper iframe {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
+.wp-block-post-content .is-provider-youtube .wp-block-embed__wrapper,
 #postContent .is-provider-youtube .wp-block-embed__wrapper {
   aspect-ratio: 16/9;
 }
+.wp-block-post-content .is-provider-youtube .wp-block-embed__wrapper iframe,
 #postContent .is-provider-youtube .wp-block-embed__wrapper iframe {
   width: 100%;
   height: 100%;

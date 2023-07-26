@@ -2,7 +2,7 @@
 <?php if (!is_home() && !is_front_page()) : ?>
   <section id="breadCrumb">
     <ul id="breadCrumbInner">
-      <li class="breadcrumb-item"><a href="<?php echo home_url('/'); ?>">TOP</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo home_url('/'); ?>">ホーム</a></li>
       <?php
       if (is_single()) {
 
