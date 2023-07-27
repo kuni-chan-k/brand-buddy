@@ -132,7 +132,6 @@ add_action('wp_head', 'my_meta_ogp');
  */
 require_once trailingslashit(get_template_directory()) . 'include/customizer.php';
 
-
 /**
  * WordPress標準のサイト内検索を無効化
  */
@@ -242,3 +241,16 @@ function my_disable_redirect_canonical($redirect_url)
     }
   }
 }
+
+/**
+ * テーマアップデート
+ */
+require 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+  'https://github.com/kuni-chan-k/brand-buddy/',
+  __FILE__,
+  'brand-buddy'
+);
+$myUpdateChecker->setBranch('main');
+$myUpdateChecker->setAuthentication('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');

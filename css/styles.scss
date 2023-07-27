@@ -21,7 +21,7 @@ body {
   grid-template-rows: auto 1fr auto;
 
   @media screen and (max-width: 1024px) {
-    padding: 0 12px 12px;
+    padding: 0 12px 24px;
   }
 }
 
@@ -59,6 +59,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 480px) {
+      display: inline-grid;
+      gap: 14px;
+    }
   }
 
   .footer__container {
@@ -75,6 +80,7 @@ body {
 
   small {
     font-size: 14px;
+    line-height: 16px;
   }
 }
 
