@@ -25,7 +25,7 @@ function work_customizer($wp_customize)
     'work_section_view' => [
       'label'       => '実績エリアを表示する',
       'type'        => 'checkbox',
-      'default'     => true,
+      'default'     => false,
     ],
     'work_section_name' => [
       'label'       => 'セクション名',
@@ -46,7 +46,7 @@ function work_customizer($wp_customize)
       $wp_customize,
       'work_view_count',
       array(
-        'label'    => '1度に表示する記事数',
+        'label'    => 'トップページで表示する記事数',
         'section'  => $section_name,
         'settings' => 'work_view_count',
         'description' => 'スマホ表示時は1列､それ以外では2列表示になります',

@@ -7,15 +7,15 @@ function banner_customizer($wp_customize)
   $wp_customize->add_section(
     $section_name,
     [
-      'title'           => 'バナーエリア設定',
-      'priority'        => 25,
+      'title'       => 'バナーエリア設定',
+      'priority'    => 25,
     ]
   );
   $fields = [
     'banner_section_view' => [
       'label'       => 'バナーエリアを表示する',
       'type'        => 'checkbox',
-      'default'     => true,
+      'default'     => false,
     ],
     'banner_section_name' => [
       'label'       => 'セクション名',

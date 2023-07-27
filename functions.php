@@ -213,11 +213,13 @@ get_template_part('include/html-tag-setting');
  */
 add_action('pre_get_posts', function ($query) {
   if (is_search() || is_category() || is_tag()) {
-    if (!empty(get_theme_mod('work_view_count'))) {
-      $query->set('posts_per_page', get_theme_mod('work_view_count'));
-    } else {
-      $query->set('posts_per_page', 6);
-    }
+    // if (!empty(get_theme_mod('work_view_count'))) {
+    //   $query->set('posts_per_page', get_theme_mod('work_view_count'));
+    // } else {
+    //   $query->set('posts_per_page', 6);
+    // }
+    // 一旦､ページネーションを8で固定にする
+    $query->set('posts_per_page', 8);
     return;
   }
 });

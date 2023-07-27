@@ -40,9 +40,9 @@ function design_customizer($wp_customize)
       $wp_customize,
       'border_color',
       array(
-        'label' => '枠線の色',
-        'section' => $section_name,
-        'settings' => 'border_color',
+        'label'       => '枠線の色',
+        'section'     => $section_name,
+        'settings'    => 'border_color',
         'description' => '「もっと見る」ボタンの枠の色にも反映されます',
       )
     )

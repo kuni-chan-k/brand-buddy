@@ -65,7 +65,12 @@ class WP_Customize_Range_Control extends WP_Customize_Control
       <?php endif; ?>
       <input data-input-type="range" type="range" <?php $this->input_attrs(); ?> value="<?php echo esc_attr($this->value()); ?>" <?php $this->link(); ?> oninput="jQuery(this).next().text( jQuery(this).val() )" />
       <div class="cs-range-value"><?php echo esc_attr($this->value()); ?>
-        <?php get_theme_mod('work_view_count'); ?>
+        <?php
+          if (!empty($this->value())) {
+          echo esc_attr($this->value());
+          } else {
+          echo esc_attr($this->input_attrs['default']);
+          }  ?>
       </div>
       <?php if (!empty($this->description)) : ?>
         <span class="description customize-control-description"><?php echo $this->description; ?></span>
@@ -94,9 +99,9 @@ add_action('customize_register', 'my_theme_customize_register');
  */
 function customizer_color()
 {
-  $border_color = get_theme_mod('border_color', '#000');
-  $main_border_thickness = get_theme_mod('main_border_thickness', 6);
-  $main_background_color = get_theme_mod('main_background_color', 6);
+  $border_color = !empty(get_theme_mod('border_color')) ? get_theme_mod('border_color') : '#000';
+  $main_border_thickness = !empty(get_theme_mod('main_border_thickness')) ? get_theme_mod('main_border_thickness') : '6';
+  $main_background_color = !empty(get_theme_mod('main_background_color')) ? get_theme_mod('main_background_color') : '#fff';
   ?>
   <style type="text/css">
     .container {

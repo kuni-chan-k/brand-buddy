@@ -27,17 +27,17 @@ function name_customizer($wp_customize)
     'top_name' => [
       'label'       => '名前',
       'type'        => 'text',
-      'default'     => ''
+      'default'     => 'お名前'
     ],
     'top_job' => [
       'label'       => '肩書',
       'type'        => 'text',
-      'default'     => ''
+      'default'     => '肩書'
     ],
     'top_lead_summary' => [
       'label'       => '紹介文',
       'type'        => 'textarea',
-      'default'     => ''
+      'default'     => '自己紹介文'
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
