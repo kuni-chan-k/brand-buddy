@@ -109,6 +109,7 @@ function my_meta_ogp()
   // 出力するOGPタグをまとめる
   $html = "\n";
   $html .= '<title>' . esc_attr($ogp_title) . '</title>' . "\n";
+  $html .= '<meta name="description" content="' . esc_attr($ogp_description) . '">' . "\n";
   $html .= '<meta property="og:title" content="' . esc_attr($ogp_title) . '">' . "\n";
   $html .= '<meta property="og:description" content="' . esc_attr($ogp_description) . '">' . "\n";
   $html .= '<meta property="og:type" content="' . $ogp_type . '">' . "\n";

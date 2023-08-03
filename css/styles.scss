@@ -170,7 +170,7 @@ h3 {
     }
     .main__head__job {
       text-align: center;
-      color: #aaa;
+      opacity: 0.7;
     }
 
     h2 {
@@ -361,7 +361,9 @@ h3 {
 // タグ・最終更新日付エリア
 .post-tag-area,
 .main__work__post__meta {
-  padding: 0 16px 16px;
+  padding: 0 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 // タグエリア

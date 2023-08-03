@@ -158,7 +158,7 @@ h3 {
 }
 .main .main__head .main__head__job {
   text-align: center;
-  color: #aaa;
+  opacity: 0.7;
 }
 .main .main__head h2 {
   margin-bottom: 0;
@@ -315,7 +315,9 @@ h3 {
 
 .post-tag-area,
 .main__work__post__meta {
-  padding: 0 16px 16px;
+  padding: 0 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .post-tag-area ul {

@@ -116,6 +116,7 @@
           <?php
           if (!empty(get_theme_mod('work_category'))) {
             query_posts('category_name=' . get_theme_mod('work_category'));
+            query_posts('posts_per_page=' . get_theme_mod('work_view_count'));
           }
           ?>
 

@@ -64,7 +64,7 @@ class WP_Customize_Range_Control extends WP_Customize_Control
         <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
       <?php endif; ?>
       <input data-input-type="range" type="range" <?php $this->input_attrs(); ?> value="<?php echo esc_attr($this->value()); ?>" <?php $this->link(); ?> oninput="jQuery(this).next().text( jQuery(this).val() )" />
-      <div class="cs-range-value"><?php echo esc_attr($this->value()); ?>
+      <div class="cs-range-value">
         <?php
           if (!empty($this->value())) {
           echo esc_attr($this->value());
