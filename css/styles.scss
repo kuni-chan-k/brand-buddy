@@ -63,6 +63,7 @@ body {
     @media screen and (max-width: 480px) {
       display: inline-grid;
       gap: 14px;
+      width: auto;
     }
   }
 
@@ -74,9 +75,11 @@ body {
 
   #footerMenuList {
     display: inline-flex;
-    flex-flow: column;
     font-size: 14px;
     text-decoration: underline;
+    @media screen and (max-width: 480px) {
+      flex-flow: column;
+    }
   }
 
   small {
@@ -265,6 +268,7 @@ h3 {
   }
 
   .main__banner {
+    margin-top: 32px;
     margin-bottom: 60px;
     .main__banner__wrapper {
       display: flex;
@@ -513,4 +517,11 @@ h3 {
   &:hover {
     transform: translateY(-5px);
   }
+}
+
+// 標準のボタンにもホバーアニメーションを追加
+.wp-block-button__link {
+    &:hover {
+    transform: translateY(-5px);
+  } 
 }

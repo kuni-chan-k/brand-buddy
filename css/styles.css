@@ -57,6 +57,7 @@ body {
   .footer .footer_inner {
     display: inline-grid;
     gap: 14px;
+    width: auto;
   }
 }
 .footer .footer__container {
@@ -66,9 +67,13 @@ body {
 }
 .footer #footerMenuList {
   display: inline-flex;
-  flex-flow: column;
   font-size: 14px;
   text-decoration: underline;
+}
+@media screen and (max-width: 480px) {
+  .footer #footerMenuList {
+    flex-flow: column;
+  }
 }
 .footer small {
   font-size: 14px;
@@ -236,6 +241,7 @@ h3 {
   }
 }
 .main .main__banner {
+  margin-top: 32px;
   margin-bottom: 60px;
 }
 .main .main__banner .main__banner__wrapper {
@@ -438,5 +444,9 @@ h3 {
   text-decoration: none;
 }
 .more_read_link:hover {
+  transform: translateY(-5px);
+}
+
+.wp-block-button__link:hover {
   transform: translateY(-5px);
 }/*# sourceMappingURL=styles.css.map */

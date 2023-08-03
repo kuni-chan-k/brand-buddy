@@ -68,10 +68,10 @@
               <img src="<?php echo get_stylesheet_directory_uri(); ?>/svg/github-mark.svg" alt="line" />
             </a>
           <?php endif; ?>
-        <?php endif; ?>
         </div>
+      <?php endif; ?>
 
-        <!-- <div class="main__news">
+      <!-- <div class="main__news">
       <h3 class="main__section__title">お知らせ</h3>
       <ul class="posts-wrapper">
         <li class="news-wrapper">
@@ -89,93 +89,93 @@
       </ul>
     </div> -->
 
-        <?php if (get_theme_mod('banner_section_view') === true) : ?>
-          <section class="main__banner">
-            <?php if (!empty(get_theme_mod('banner_section_name'))) : ?>
-              <h3 class="main__section__title"><?php echo get_theme_mod('banner_section_name') ?></h3>
+      <?php if (get_theme_mod('banner_section_view') === true) : ?>
+        <section class="main__banner">
+          <?php if (!empty(get_theme_mod('banner_section_name'))) : ?>
+            <h3 class="main__section__title"><?php echo get_theme_mod('banner_section_name') ?></h3>
+          <?php endif; ?>
+
+          <div class="main__banner__wrapper">
+            <?php if (!empty(get_theme_mod('banner_section_image1')) and !empty(get_theme_mod('banner_section_url1'))) : ?>
+              <article class="main__banner__wrapper__item">
+                <a href="<?php echo get_theme_mod('banner_section_url1') ?>">
+                  <img src="<?php echo get_theme_mod('banner_section_image1') ?>" alt="<?php echo get_theme_mod('banner_section_title1') ?>" />
+                </a>
+              </article>
             <?php endif; ?>
 
-            <div class="main__banner__wrapper">
-              <?php if (!empty(get_theme_mod('banner_section_image1')) and !empty(get_theme_mod('banner_section_url1'))) : ?>
-                <article class="main__banner__wrapper__item">
-                  <a href="<?php echo get_theme_mod('banner_section_url1') ?>">
-                    <img src="<?php echo get_theme_mod('banner_section_image1') ?>" alt="<?php echo get_theme_mod('banner_section_title1') ?>" />
-                  </a>
-                </article>
-              <?php endif; ?>
+            <?php if (!empty(get_theme_mod('banner_section_image2')) and !empty(get_theme_mod('banner_section_url2'))) : ?>
+              <article class="main__banner__wrapper__item">
+                <a href="<?php echo get_theme_mod('banner_section_url2') ?>">
+                  <img src="<?php echo get_theme_mod('banner_section_image2') ?>" alt="<?php echo get_theme_mod('banner_section_title2') ?>" />
+                </a>
+              </article>
+            <?php endif; ?>
 
-              <?php if (!empty(get_theme_mod('banner_section_image2')) and !empty(get_theme_mod('banner_section_url2'))) : ?>
-                <article class="main__banner__wrapper__item">
-                  <a href="<?php echo get_theme_mod('banner_section_url2') ?>">
-                    <img src="<?php echo get_theme_mod('banner_section_image2') ?>" alt="<?php echo get_theme_mod('banner_section_title2') ?>" />
-                  </a>
-                </article>
-              <?php endif; ?>
+            <?php if (!empty(get_theme_mod('banner_section_image3')) and !empty(get_theme_mod('banner_section_url3'))) : ?>
+              <article class="main__banner__wrapper__item">
+                <a href="<?php echo get_theme_mod('banner_section_url3') ?>">
+                  <img src="<?php echo get_theme_mod('banner_section_image3') ?>" alt="<?php echo get_theme_mod('banner_section_title3') ?>" />
+                </a>
+              </article>
+            <?php endif; ?>
+          </div>
 
-              <?php if (!empty(get_theme_mod('banner_section_image3')) and !empty(get_theme_mod('banner_section_url3'))) : ?>
-                <article class="main__banner__wrapper__item">
-                  <a href="<?php echo get_theme_mod('banner_section_url3') ?>">
-                    <img src="<?php echo get_theme_mod('banner_section_image3') ?>" alt="<?php echo get_theme_mod('banner_section_title3') ?>" />
-                  </a>
-                </article>
-              <?php endif; ?>
-            </div>
+        </section>
+      <?php endif; ?>
 
-          </section>
+      <?php if (get_theme_mod('work_section_view') === true) : ?>
+        <section class="main__work">
+          <?php if (!empty(get_theme_mod('work_section_name'))) : ?>
+            <h3 class="main__section__title"><?php echo get_theme_mod('work_section_name') ?></h3>
+          <?php endif; ?>
+
+          <?php
+          if (!empty(get_theme_mod('work_category'))) {
+            query_posts('category_name=' . get_theme_mod('work_category'));
+            query_posts('posts_per_page=' . get_theme_mod('work_view_count'));
+          }
+          ?>
+
+          <div class="main__work__wrapper">
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                <?php get_template_part('object/work_card'); ?>
+              <?php endwhile; ?>
+          </div>
+
+          <?php if (!empty(get_theme_mod('work_view_count')) && (wp_count_posts()->publish > get_theme_mod('work_view_count'))) : ?>
+            <a href="<?php echo home_url('/' . get_theme_mod('work_category')); ?>" class="more_read_link">
+              もっと見る
+            </a>
+          <?php endif; ?>
+
+        <?php else : ?>
+          <div class="main__work__wrapper">
+            <p>記事が見つかりません</p>
+          </div>
         <?php endif; ?>
+        </section>
+      <?php endif; ?>
 
-        <?php if (get_theme_mod('work_section_view') === true) : ?>
-          <section class="main__work">
-            <?php if (!empty(get_theme_mod('work_section_name'))) : ?>
-              <h3 class="main__section__title"><?php echo get_theme_mod('work_section_name') ?></h3>
-            <?php endif; ?>
+      <?php if (get_theme_mod('contact_section_view') === true) : ?>
+        <section class="main__contact">
+          <?php if (!empty(get_theme_mod('contact_section_name'))) : ?>
+            <h3 class="main__section__title"><?php echo get_theme_mod('contact_section_name') ?></h3>
+          <?php endif; ?>
 
-            <?php
-            if (!empty(get_theme_mod('work_category'))) {
-              query_posts('category_name=' . get_theme_mod('work_category'));
-              query_posts('posts_per_page=' . get_theme_mod('work_view_count'));
-            }
-            ?>
-
-            <div class="main__work__wrapper">
-              <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                  <?php get_template_part('object/work_card'); ?>
-                <?php endwhile; ?>
-            </div>
-
-            <?php if (!empty(get_theme_mod('work_view_count')) && (wp_count_posts()->publish > get_theme_mod('work_view_count'))) : ?>
-              <a href="<?php echo home_url('/' . get_theme_mod('work_category')); ?>" class="more_read_link">
-                もっと見る
-              </a>
-            <?php endif; ?>
-
-          <?php else : ?>
-            <div class="main__work__wrapper">
-              <p>記事が見つかりません</p>
+          <?php if (!empty(get_theme_mod('contact_lead_summary'))) : ?>
+            <div class="main__introduction">
+              <p>
+                <?php echo nl2br(get_theme_mod('contact_lead_summary', '')) ?>
+              </p>
             </div>
           <?php endif; ?>
-          </section>
-        <?php endif; ?>
 
-        <?php if (get_theme_mod('contact_section_view') === true) : ?>
-          <section class="main__contact">
-            <?php if (!empty(get_theme_mod('contact_section_name'))) : ?>
-              <h3 class="main__section__title"><?php echo get_theme_mod('contact_section_name') ?></h3>
-            <?php endif; ?>
-
-            <?php if (!empty(get_theme_mod('contact_lead_summary'))) : ?>
-              <div class="main__introduction">
-                <p>
-                  <?php echo nl2br(get_theme_mod('contact_lead_summary', '')) ?>
-                </p>
-              </div>
-            <?php endif; ?>
-
-            <a href="<?php echo esc_html(get_theme_mod('contact_button_url', '')) ?>" class="more_read_link">
-              <?php echo !empty(get_theme_mod('contact_button_text')) ? get_theme_mod('profile_button_text') : 'お問い合わせはこちら' ?>
-            </a>
-          </section>
-        <?php endif; ?>
+          <a href="<?php echo esc_html(get_theme_mod('contact_button_url', '')) ?>" class="more_read_link">
+            <?php echo !empty(get_theme_mod('contact_button_text')) ? get_theme_mod('profile_button_text') : 'お問い合わせはこちら' ?>
+          </a>
+        </section>
+      <?php endif; ?>
     </div>
   </main>
 </div>
