@@ -9,6 +9,7 @@ require_once trailingslashit(get_template_directory()) . 'include/customizer/sns
 require_once trailingslashit(get_template_directory()) . 'include/customizer/banner.php';
 require_once trailingslashit(get_template_directory()) . 'include/customizer/work.php';
 require_once trailingslashit(get_template_directory()) . 'include/customizer/share.php';
+require_once trailingslashit(get_template_directory()) . 'include/customizer/contact.php';
 
 /**
  * テーマカスタマイザーにフォームコントロールを追加
@@ -91,6 +92,7 @@ function my_theme_customize_register($wp_customize)
   banner_customizer($wp_customize);
   work_customizer($wp_customize);
   share_customizer($wp_customize);
+  contact_customizer($wp_customize);
 }
 add_action('customize_register', 'my_theme_customize_register');
 

@@ -18,7 +18,8 @@
         </a>
       <?php endif; ?>
 
-      <?php if (!empty(get_theme_mod('sns_twitter')) ||
+      <?php if (
+        !empty(get_theme_mod('sns_twitter')) ||
         !empty(get_theme_mod('sns_facebook')) ||
         !empty(get_theme_mod('sns_instagram')) ||
         !empty(get_theme_mod('sns_tiktok')) ||
@@ -125,7 +126,7 @@
 
         <?php if (get_theme_mod('work_section_view') === true) : ?>
           <section class="main__work">
-            <?php if (!empty(get_theme_mod('banner_section_name'))) : ?>
+            <?php if (!empty(get_theme_mod('work_section_name'))) : ?>
               <h3 class="main__section__title"><?php echo get_theme_mod('work_section_name') ?></h3>
             <?php endif; ?>
 
@@ -156,11 +157,25 @@
           </section>
         <?php endif; ?>
 
-        <!-- <section class="main__contact">
-      <h3 class="main__section__title">お問い合わせ</h3>
-      <p>上記の各種SNSからご連絡ください｡</p>
-    </section> -->
+        <?php if (get_theme_mod('contact_section_view') === true) : ?>
+          <section class="main__contact">
+            <?php if (!empty(get_theme_mod('contact_section_name'))) : ?>
+              <h3 class="main__section__title"><?php echo get_theme_mod('contact_section_name') ?></h3>
+            <?php endif; ?>
 
+            <?php if (!empty(get_theme_mod('contact_lead_summary'))) : ?>
+              <div class="main__introduction">
+                <p>
+                  <?php echo nl2br(get_theme_mod('contact_lead_summary', '')) ?>
+                </p>
+              </div>
+            <?php endif; ?>
+
+            <a href="<?php echo esc_html(get_theme_mod('contact_button_url', '')) ?>" class="more_read_link">
+              <?php echo !empty(get_theme_mod('contact_button_text')) ? get_theme_mod('profile_button_text') : 'お問い合わせはこちら' ?>
+            </a>
+          </section>
+        <?php endif; ?>
     </div>
   </main>
 </div>
