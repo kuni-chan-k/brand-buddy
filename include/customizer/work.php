@@ -30,7 +30,8 @@ function work_customizer($wp_customize)
     'work_section_name' => [
       'label'       => 'セクション名',
       'type'        => 'text',
-      'default'     => '実績'
+      'default'     => '',
+      'description' => 'セクション名に入力がない場合は表示されません｡',
     ],
     'work_category' => [
       'label'       => '記事カテゴリー',

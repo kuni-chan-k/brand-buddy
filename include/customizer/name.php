@@ -1,7 +1,7 @@
 <?php
 function name_customizer($wp_customize)
 {
-  $prefix = 'top';
+  $prefix = 'name';
   $option_name = "{$prefix}_options";
   $section_name = "{$prefix}_section";
   $wp_customize->add_section(
@@ -11,7 +11,7 @@ function name_customizer($wp_customize)
       'priority'    => 23,
     ]
   );
-  $wp_customize->add_setting('top_icon');
+  $wp_customize->add_setting('name_icon');
   $wp_customize->add_control(
     new WP_Customize_Image_Control(
       $wp_customize,
@@ -19,26 +19,55 @@ function name_customizer($wp_customize)
       array(
         'label'    => 'アイコン',
         'section'  => $section_name,
-        'settings' => 'top_icon',
+        'settings' => 'name_icon',
       )
     )
   );
   $fields = [
-    'top_name' => [
+    'name' => [
       'label'       => '名前',
       'type'        => 'text',
       'default'     => 'お名前'
     ],
-    'top_job' => [
+    'name_job' => [
       'label'       => '肩書',
       'type'        => 'text',
       'default'     => '肩書'
     ],
-    'top_lead_summary' => [
+    'name_lead_summary' => [
       'label'       => '紹介文',
       'type'        => 'textarea',
       'default'     => '自己紹介文'
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
+  $fields = [
+    'name_under' => [
+      'label'       => '',
+      'type'        => 'hidden',
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
+  $fields = [
+    'profile_button_view' => [
+      'label'       => '詳細ボタンを表示する',
+      'type'        => 'checkbox',
+      'default'     => false,
+    ],
+    'profile_button_text' => [
+      'label'       => '詳細ボタンのテキスト',
+      'type'        => 'text',
+      'default'     => '',
+      'description' => '何も入力がなければ「詳細を見る」がセットされます｡',
+    ],
+    'profile_button_url' => [
+      'label'       => '詳細ボタンのリンク先',
+      'type'        => 'url',
+      'default'     => ''
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
 }

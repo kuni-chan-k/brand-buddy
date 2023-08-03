@@ -20,7 +20,8 @@ function banner_customizer($wp_customize)
     'banner_section_name' => [
       'label'       => 'セクション名',
       'type'        => 'text',
-      'default'     => ''
+      'default'     => '',
+      'description' => 'セクション名に入力がない場合は表示されません｡',
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
