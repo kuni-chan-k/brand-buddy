@@ -69,10 +69,12 @@ body {
   display: inline-flex;
   font-size: 14px;
   text-decoration: underline;
+  gap: 8px;
 }
 @media screen and (max-width: 480px) {
   .footer #footerMenuList {
     flex-flow: column;
+    gap: 0;
   }
 }
 .footer small {
@@ -284,6 +286,7 @@ h3 {
   width: 100%;
 }
 .main .main__work {
+  margin-top: 32px;
   margin-bottom: 60px;
 }
 .main .main__work .main__work__wrapper {
@@ -301,6 +304,9 @@ h3 {
   }
 }
 .main .main__work .main__work__wrapper__item {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
   border-radius: 16px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
@@ -329,7 +335,11 @@ h3 {
 }
 .main .main__work .main__work__post__title h3 {
   font-size: 18px;
-  margin: 8px 0;
+  margin: 0 0 8px;
+}
+.main .main__contact {
+  margin-top: 32px;
+  margin-bottom: 60px;
 }
 .main .main__contact p {
   text-align: center;
@@ -338,8 +348,8 @@ h3 {
 .post-tag-area,
 .main__work__post__meta {
   padding: 0 16px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .post-tag-area ul {
@@ -467,4 +477,43 @@ h3 {
 
 .wp-block-button__link:hover {
   transform: translateY(-5px);
+}
+
+#return_top .pagetop {
+  height: 70px;
+  width: 70px;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background: #fff;
+  border: 4px solid #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  font-size: 16px;
+  font-weight: bold;
+}
+@media screen and (max-width: 1024px) {
+  #return_top .pagetop {
+    height: 60px;
+    width: 60px;
+    right: 5px;
+    bottom: 10px;
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  #return_top .pagetop {
+    right: calc(50% - 600px);
+  }
+}
+#return_top .pagetop__arrow {
+  height: 12px;
+  width: 12px;
+  border-top: 3px solid #333;
+  border-right: 3px solid #333;
+  transform: translateY(10%) rotate(-45deg);
 }/*# sourceMappingURL=styles.css.map */

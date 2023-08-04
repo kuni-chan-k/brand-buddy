@@ -50,7 +50,7 @@ function work_customizer($wp_customize)
         'label'    => 'トップページで表示する記事数',
         'section'  => $section_name,
         'settings' => 'work_view_count',
-        'description' => 'スマホ表示時は1列､それ以外では2列表示になります',
+        'description' => 'スマホ表示時は1列､それ以外では2列表示になります｡',
         'type'     => 'range',
         'input_attrs' => array(
           'min'     => 2,

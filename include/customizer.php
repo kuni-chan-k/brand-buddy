@@ -68,11 +68,11 @@ class WP_Customize_Range_Control extends WP_Customize_Control
       <input data-input-type="range" type="range" <?php $this->input_attrs(); ?> value="<?php echo esc_attr($this->value()); ?>" <?php $this->link(); ?> oninput="jQuery(this).next().text( jQuery(this).val() )" />
       <div class="cs-range-value">
         <?php
-          if (!empty($this->value())) {
+        if (!empty($this->value())) {
           echo esc_attr($this->value());
-          } else {
+        } else {
           echo esc_attr($this->input_attrs['default']);
-          }  ?>
+        }  ?>
       </div>
       <?php if (!empty($this->description)) : ?>
         <span class="description customize-control-description"><?php echo $this->description; ?></span>
@@ -119,6 +119,15 @@ function customizer_color()
 
     .more_read_link {
       border: 4px solid <?php echo $border_color; ?>;
+    }
+
+    #return_top .pagetop {
+      border: 4px solid <?php echo $border_color; ?>;
+    }
+
+    #return_top .pagetop__arrow {
+      border-top: 3px solid <?php echo $border_color; ?>;
+      border-right: 3px solid <?php echo $border_color; ?>;
     }
   </style>
 <?php

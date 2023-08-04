@@ -18,7 +18,7 @@ function share_customizer($wp_customize)
       'my_control_share',
       array(
         'label'    => 'OGP画像',
-        'description' => 'TOPページがシェアされた時の画像',
+        'description' => 'TOPページがシェアされた時の画像を選んでください｡',
         'section'  => $section_name,
         'settings' => 'share_ogp',
       )
@@ -28,7 +28,7 @@ function share_customizer($wp_customize)
     'share_twitter_card' => [
       'label'       => 'Twitterカードタイプ',
       'type'        => 'select',
-      'description' => 'Twitterでシェアしたときのリンクの表示方法を選べます',
+      'description' => 'Twitterでシェアしたときのリンクの表示方法を選べます｡',
       'choices'     => array(
         'summary'             => 'コンパクト',
         'summary_large_image' => 'ラージ',
@@ -37,7 +37,7 @@ function share_customizer($wp_customize)
     'share_facebook_id' => [
       'label'       => 'Facebookの管理者ID(15桁の数字)',
       'type'        => 'text',
-      'description' => 'FacebookでシェアしたときのリンクのOGPを取得するのに必要なIDです',
+      'description' => 'FacebookでシェアしたときのリンクのOGPを取得するのに必要なIDです｡',
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);

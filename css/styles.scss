@@ -77,8 +77,10 @@ body {
     display: inline-flex;
     font-size: 14px;
     text-decoration: underline;
+    gap: 8px;
     @media screen and (max-width: 480px) {
       flex-flow: column;
+      gap: 0;
     }
   }
 
@@ -311,6 +313,7 @@ h3 {
   }
 
   .main__work {
+    margin-top: 32px;
     margin-bottom: 60px;
     .main__work__wrapper {
       display: grid;
@@ -326,6 +329,9 @@ h3 {
       }
     }
     .main__work__wrapper__item {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
       border-radius: 16px;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,.15);
       transition: all .3s ease;
@@ -358,13 +364,15 @@ h3 {
       padding: 0 16px;
       h3 {
         font-size: 18px;
-        margin: 8px 0;
+        margin: 0 0 8px;
       }
 
     }
   }
 
   .main__contact {
+    margin-top: 32px;
+    margin-bottom: 60px;
     p {
       text-align: center;
     }
@@ -375,8 +383,8 @@ h3 {
 .post-tag-area,
 .main__work__post__meta {
   padding: 0 16px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 // タグエリア
@@ -444,27 +452,6 @@ h3 {
   text-align: center;
   margin-bottom: 60px;
 }
-
-// グラデーション
-// body {
-//   background: linear-gradient(131deg, #FF3F9763, #3365E563, #3365E563, #3365E563);
-//   background-size: 800% 800%;
-//   animation: GradientBackground 16s ease infinite;
-// }
-
-// @keyframes GradientBackground {
-//   0% {
-//     background-position: 0% 50%;
-//   }
-
-//   50% {
-//     background-position: 100% 50%;
-//   }
-
-//   100% {
-//     background-position: 0% 50%;
-//   }
-// };
 
 // ページネーション
 .pagination {
@@ -539,4 +526,46 @@ h3 {
     &:hover {
     transform: translateY(-5px);
   } 
+}
+
+// トップに戻るボタン
+#return_top {
+  .pagetop {
+    height: 70px;
+    width: 70px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: #fff;
+    border: 4px solid #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    font-size: 16px;
+    font-weight: bold;
+
+    @media screen and (max-width: 1024px) {
+      height: 60px;
+      width: 60px;
+      right: 5px;
+      bottom: 10px;
+      font-size: 14px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      right: calc(50% - 600px);
+    }
+
+  }
+
+  .pagetop__arrow {
+    height: 12px;
+    width: 12px;
+    border-top: 3px solid #333;
+    border-right: 3px solid #333;
+    transform: translateY(10%) rotate(-45deg);
+  }
 }

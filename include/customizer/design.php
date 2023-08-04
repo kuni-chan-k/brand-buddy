@@ -20,7 +20,7 @@ function design_customizer($wp_customize)
         'label'    => 'メインエリアの枠線の太さ',
         'section'  => $section_name,
         'settings' => 'main_border_thickness',
-        'description' => '枠線をなくしたい場合は枠線の太さを0にしてください',
+        'description' => '枠線をなくしたい場合は枠線の太さを0にしてください｡',
         'type'     => 'range',
         'input_attrs' => array(
           'min'     => 0,
@@ -43,7 +43,7 @@ function design_customizer($wp_customize)
         'label'       => '枠線の色',
         'section'     => $section_name,
         'settings'    => 'border_color',
-        'description' => '「もっと見る」ボタンの枠の色にも反映されます',
+        'description' => '「もっと見る」ボタン､「TOP」ボタンの枠の色にも反映されます｡',
       )
     )
   );
