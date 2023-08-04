@@ -6,6 +6,7 @@
 require_once trailingslashit(get_template_directory()) . 'include/customizer/design.php';
 require_once trailingslashit(get_template_directory()) . 'include/customizer/name.php';
 require_once trailingslashit(get_template_directory()) . 'include/customizer/sns.php';
+require_once trailingslashit(get_template_directory()) . 'include/customizer/news.php';
 require_once trailingslashit(get_template_directory()) . 'include/customizer/banner.php';
 require_once trailingslashit(get_template_directory()) . 'include/customizer/work.php';
 require_once trailingslashit(get_template_directory()) . 'include/customizer/share.php';
@@ -89,6 +90,7 @@ function my_theme_customize_register($wp_customize)
   design_customizer($wp_customize);
   name_customizer($wp_customize);
   sns_customizer($wp_customize);
+  news_customizer($wp_customize);
   banner_customizer($wp_customize);
   work_customizer($wp_customize);
   share_customizer($wp_customize);

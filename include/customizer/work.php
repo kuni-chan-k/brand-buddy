@@ -18,7 +18,7 @@ function work_customizer($wp_customize)
     $section_name,
     [
       'title'       => '実績エリア設定',
-      'priority'    => 26,
+      'priority'    => 27,
     ]
   );
   $fields = [

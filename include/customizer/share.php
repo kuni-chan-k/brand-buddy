@@ -8,7 +8,7 @@ function share_customizer($wp_customize)
     $section_name,
     [
       'title'       => 'SNSシェア設定',
-      'priority'    => 27,
+      'priority'    => 28,
     ]
   );
   $wp_customize->add_setting('share_ogp');

@@ -8,7 +8,7 @@ function contact_customizer($wp_customize)
     $section_name,
     [
       'title'       => '問い合わせエリア',
-      'priority'    => 28,
+      'priority'    => 29,
     ]
   );
   $fields = [

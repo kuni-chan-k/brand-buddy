@@ -219,25 +219,43 @@ h3 {
 .main .main__news {
   margin-bottom: 60px;
 }
+.main .main__news .posts-wrapper {
+  max-width: 680px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 .main .main__news .posts-wrapper li {
   border-bottom: 0.5px solid #919191;
 }
-.main .main__news .posts-wrapper a {
+.main .main__news .posts-wrapper .post-wrapper {
   display: flex;
   flex-wrap: nowrap;
   gap: 30px;
   padding: 12px;
 }
 @media screen and (max-width: 1024px) {
-  .main .main__news .posts-wrapper a {
+  .main .main__news .posts-wrapper .post-wrapper {
     gap: 0;
     flex-wrap: wrap;
     padding: 12px 0;
   }
 }
+.main .main__news .posts-wrapper .post-wrapper li {
+  border: 0.5px solid #919191;
+  padding: 0 8px;
+}
+.main .main__news .posts-wrapper a {
+  padding: 0;
+  text-decoration: none;
+}
 @media screen and (max-width: 1024px) {
-  .main .main__news .posts-wrapper .news-date {
+  .main .main__news .posts-wrapper .post-date {
     width: 100%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .main .main__news .posts-wrapper .post-category {
+    margin-right: 8px;
   }
 }
 .main .main__banner {

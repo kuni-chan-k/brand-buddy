@@ -71,23 +71,31 @@
         </div>
       <?php endif; ?>
 
-      <!-- <div class="main__news">
-      <h3 class="main__section__title">お知らせ</h3>
-      <ul class="posts-wrapper">
-        <li class="news-wrapper">
-          <a href="/">
-            <div class="news-date">2023.06.19</div>
-            <div class="news-title">お知らせタイトルお知らせタイトルお知らせタイトルお知らせタイトルお知らせタイトル</div>
-          </a>
-        </li>
-        <li class="news-wrapper">
-          <a href="/">
-            <div class="news-date">2023.06.18</div>
-            <div class="news-title">お知らせタイトル</div>
-          </a>
-        </li>
-      </ul>
-    </div> -->
+      <?php if (get_theme_mod('news_section_view') === true) : ?>
+        <div class="main__news">
+          <?php if (!empty(get_theme_mod('news_section_name'))) : ?>
+            <h3 class="main__section__title"><?php echo get_theme_mod('news_section_name') ?></h3>
+          <?php endif; ?>
+          <ul class="posts-wrapper">
+            <?php
+              if (!empty(get_theme_mod('news_view_count'))) {
+                query_posts('posts_per_page='. get_theme_mod('news_view_count'));
+              } else {
+                query_posts('posts_per_page=3');
+              } 
+            ?>
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                <?php get_template_part('object/post_list'); ?>
+              <?php endwhile;
+              wp_reset_query(); ?>
+            <?php else : ?>
+              <div class="main__work__wrapper">
+                <p>記事が見つかりません</p>
+              </div>
+            <?php endif; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
 
       <?php if (get_theme_mod('banner_section_view') === true) : ?>
         <section class="main__banner">
@@ -140,7 +148,9 @@
           <div class="main__work__wrapper">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <?php get_template_part('object/work_card'); ?>
-              <?php endwhile; ?>
+              <?php endwhile;
+              wp_reset_query(); ?>
+            <?php endif; ?>
           </div>
 
           <?php if (!empty(get_theme_mod('work_view_count')) && (wp_count_posts()->publish > get_theme_mod('work_view_count'))) : ?>
@@ -153,7 +163,6 @@
           <div class="main__work__wrapper">
             <p>記事が見つかりません</p>
           </div>
-        <?php endif; ?>
         </section>
       <?php endif; ?>
 

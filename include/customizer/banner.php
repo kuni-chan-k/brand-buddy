@@ -8,7 +8,7 @@ function banner_customizer($wp_customize)
     $section_name,
     [
       'title'       => 'バナーエリア設定',
-      'priority'    => 25,
+      'priority'    => 26,
     ]
   );
   $fields = [
