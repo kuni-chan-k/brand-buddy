@@ -4,10 +4,10 @@
       <time datetime=<?php echo get_the_modified_time('Y-m-d'); ?>><?php echo get_the_modified_time('Y/m/d'); ?></time>
     </div>
     <div class="post-category">
-      <?php $postcategorys = get_the_category();
-      if ($postcategorys) {
+      <?php $categorys = get_the_category();
+      if ($categorys) {
         echo '<ul>';
-        foreach ($postcategorys as $category) {
+        foreach ($categorys as $category) {
           echo '<li class="' . $category->slug . '"><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></li>';
         }
         echo '</ul>';

@@ -1,16 +1,16 @@
 	<footer class="footer">
-	  <div class="footer_inner">
+	  <div class="footer__inner">
 	    <?php if (has_nav_menu('footer')) : ?>
 	      <div id="commonFooterSiteMenu">
 	        <!-- global navigation -->
-	        <div id="footerMenuBox">
+	        <div>
 	          <?php
             wp_nav_menu(
               array(
                 'theme_location'  => 'footer',
                 'container'       => 'nav',
                 'container_class' => 'o--nav-box',
-                'items_wrap'      => '<ul id="footerMenuList">%3$s</ul>',
+                'items_wrap'      => '<ul id="footer-menu-list">%3$s</ul>',
               )
             );
             ?>
@@ -22,7 +22,7 @@
 	</footer>
 
 	<!-- トップに戻るボタン -->
-	<div id="return_top">
+	<div id="return__top">
 	  <a class="pagetop" href="#">
 	    <div class="pagetop__arrow"></div>
 	    TOP
@@ -34,7 +34,7 @@
 	<script>
 	  // 	トップに戻るボタン
 	  jQuery(function() {
-	    var pageTop = jQuery('#return_top');
+	    var pageTop = jQuery('#return__top');
 	    pageTop.hide();
 	    jQuery(window).scroll(function() {
 	      if (jQuery(this).scrollTop() > 600) {

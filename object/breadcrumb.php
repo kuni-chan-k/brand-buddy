@@ -1,7 +1,6 @@
-<!-- breadcrumb -->
 <?php if (!is_home() && !is_front_page()) : ?>
-  <section id="breadCrumb">
-    <ul id="breadCrumbInner">
+  <section id="bread-crumb">
+    <ul id="bread-crumb__inner">
       <li class="breadcrumb-item"><a href="<?php echo home_url('/'); ?>">ホーム</a></li>
       <?php
       if (is_single()) {
@@ -19,33 +18,27 @@
             }
           }
         }
-
       } elseif (is_tag()) {
 
         $tag = single_tag_title('', false);
         echo '<li class="breadcrumb-item"><span class="breadcrumb-parts">＞</span>タグ:' . $tag . '</li>';
-
       } elseif (is_search()) {
 
         $str = '<li class="breadcrumb-item"><span class="breadcrumb-parts">＞</span>検索結果「' . get_search_query() . '」</li>';
         echo $str;
-
       } elseif (is_author()) {
 
         $str = '<li class="breadcrumb-item"><span class="breadcrumb-parts">＞</span>投稿者：' . get_the_author_meta('display_name', get_query_var('author')) . '</li>';
         echo $str;
-
       } elseif (is_404()) {
 
         $str = '<li class="breadcrumb-item"><span class="breadcrumb-parts">＞</span>ページが見つかりませんでした</li>';
         echo $str;
-
       } elseif (is_post_type_archive()) {
 
         $customPostTitle = post_type_archive_title('', false);
         $str = '<li class="breadcrumb-item"><span class="breadcrumb-parts">＞</span>' . $customPostTitle . '</li>';
         echo $str;
-
       }
       ?>
 
@@ -66,4 +59,3 @@
   </section>
 
 <?php endif; ?>
-<!--breadcrumb-->

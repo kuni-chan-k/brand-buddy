@@ -52,7 +52,7 @@ body {
   padding: 16px 24px;
   display: flex;
   
-  .footer_inner {
+  .footer__inner {
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
@@ -73,7 +73,7 @@ body {
     padding: 64px 24px;
   }
 
-  #footerMenuList {
+  #footer-menu-list {
     display: inline-flex;
     font-size: 14px;
     text-decoration: underline;
@@ -364,7 +364,7 @@ h3 {
       padding: 0 16px;
       h3 {
         font-size: 18px;
-        margin: 0 0 8px;
+        margin: 8px 0 4px;
       }
 
     }
@@ -414,7 +414,7 @@ h3 {
 }
 
 // パンくずリスト
-#breadCrumb {
+#bread-crumb {
 	margin: 0 auto;
 	width: 100%;
 	font-size: .9rem;
@@ -432,7 +432,7 @@ h3 {
     }
   }
 }
-#breadCrumbInner {
+#bread-crumb__inner {
 	padding-left: 2px;
 
   .breadcrumb-item {
@@ -529,7 +529,7 @@ h3 {
 }
 
 // トップに戻るボタン
-#return_top {
+#return__top {
   .pagetop {
     height: 70px;
     width: 70px;

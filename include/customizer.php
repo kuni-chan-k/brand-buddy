@@ -121,11 +121,11 @@ function customizer_color()
       border: 4px solid <?php echo $border_color; ?>;
     }
 
-    #return_top .pagetop {
+    #return__top .pagetop {
       border: 4px solid <?php echo $border_color; ?>;
     }
 
-    #return_top .pagetop__arrow {
+    #return__top .pagetop__arrow {
       border-top: 3px solid <?php echo $border_color; ?>;
       border-right: 3px solid <?php echo $border_color; ?>;
     }

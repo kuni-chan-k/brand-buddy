@@ -187,15 +187,15 @@ function show_Linkcard($atts)
   //HTML出力
   $linkcard = '
   <div class="blogcard ex">
-  <a href="' . $url . '" target="_blank" rel="noopener noreferrer">
-   <div class="blogcard_thumbnail">' . $xLink_img . '</div>
-   <div class="blogcard_content">
-    <div class="blogcard_title"><p>' . $Link_title . '</p></div>
-    <div class="blogcard_description"><p>' . $Link_description . '<p></div>
-    <div class="blogcard_link"><span>URL</span>' . $url . '<i class="icon-external-link-alt"></i></div>
-   </div>
-   <div class="clear"></div>
-  </a>
+    <a href="' . $url . '" target="_blank" rel="noopener noreferrer">
+    <div class="blogcard_thumbnail">' . $xLink_img . '</div>
+    <div class="blogcard_content">
+      <div class="blogcard_title"><p>' . $Link_title . '</p></div>
+      <div class="blogcard_description"><p>' . $Link_description . '<p></div>
+      <div class="blogcard_link"><span>URL</span>' . $url . '<i class="icon-external-link-alt"></i></div>
+    </div>
+    <div class="clear"></div>
+    </a>
   </div>';
 
   return $linkcard;

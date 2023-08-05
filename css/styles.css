@@ -45,7 +45,7 @@ body {
   padding: 16px 24px;
   display: flex;
 }
-.footer .footer_inner {
+.footer .footer__inner {
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
@@ -54,7 +54,7 @@ body {
   align-items: center;
 }
 @media screen and (max-width: 480px) {
-  .footer .footer_inner {
+  .footer .footer__inner {
     display: inline-grid;
     gap: 14px;
     width: auto;
@@ -65,14 +65,14 @@ body {
   margin: 0 auto;
   padding: 64px 24px;
 }
-.footer #footerMenuList {
+.footer #footer-menu-list {
   display: inline-flex;
   font-size: 14px;
   text-decoration: underline;
   gap: 8px;
 }
 @media screen and (max-width: 480px) {
-  .footer #footerMenuList {
+  .footer #footer-menu-list {
     flex-flow: column;
     gap: 0;
   }
@@ -335,7 +335,7 @@ h3 {
 }
 .main .main__work .main__work__post__title h3 {
   font-size: 18px;
-  margin: 0 0 8px;
+  margin: 8px 0 4px;
 }
 .main .main__contact {
   margin-top: 32px;
@@ -373,31 +373,31 @@ h3 {
   font-size: 12px;
 }
 
-#breadCrumb {
+#bread-crumb {
   margin: 0 auto;
   width: 100%;
   font-size: 0.9rem;
   padding: 16px 0;
 }
-#breadCrumb a {
+#bread-crumb a {
   color: #0017CC;
   text-decoration: underline;
 }
-#breadCrumb a:hover {
+#bread-crumb a:hover {
   color: #010082;
 }
-#breadCrumb a:visited {
+#bread-crumb a:visited {
   color: #010082;
 }
 
-#breadCrumbInner {
+#bread-crumb__inner {
   padding-left: 2px;
 }
-#breadCrumbInner .breadcrumb-item {
+#bread-crumb__inner .breadcrumb-item {
   display: inline-block;
   letter-spacing: 0.06rem;
 }
-#breadCrumbInner .breadcrumb-parts {
+#bread-crumb__inner .breadcrumb-parts {
   opacity: 0.7;
   display: inline-block;
   transform: scale(0.66);
@@ -479,7 +479,7 @@ h3 {
   transform: translateY(-5px);
 }
 
-#return_top .pagetop {
+#return__top .pagetop {
   height: 70px;
   width: 70px;
   position: fixed;
@@ -497,7 +497,7 @@ h3 {
   font-weight: bold;
 }
 @media screen and (max-width: 1024px) {
-  #return_top .pagetop {
+  #return__top .pagetop {
     height: 60px;
     width: 60px;
     right: 5px;
@@ -506,11 +506,11 @@ h3 {
   }
 }
 @media screen and (min-width: 1280px) {
-  #return_top .pagetop {
+  #return__top .pagetop {
     right: calc(50% - 600px);
   }
 }
-#return_top .pagetop__arrow {
+#return__top .pagetop__arrow {
   height: 12px;
   width: 12px;
   border-top: 3px solid #333;
