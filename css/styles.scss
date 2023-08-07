@@ -269,7 +269,7 @@ h3 {
   }
 
   .main__banner {
-    padding-top: 32px;
+    padding-top: 64px;
     .main__banner__wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -303,6 +303,7 @@ h3 {
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 40px;
       grid-template-columns: 1fr 1fr;
 
       @media screen and (max-width: 480px) {
@@ -487,7 +488,7 @@ h3 {
 
 // もっと見るボタン
 .more_read_link {
-  margin: 32px auto;
+  margin: 24px auto;
   display: block;
   width: fit-content;
   min-width: 200px;
@@ -549,5 +550,34 @@ h3 {
     border-top: 3px solid #333;
     border-right: 3px solid #333;
     transform: translateY(10%) rotate(-45deg);
+  }
+}
+
+// ダウンロードページのデザイン
+.w3eden .card {
+  margin-top: 1.5rem imn !important;
+}
+
+.w3eden .media {
+  align-items: center !important;
+}
+
+.card-body {
+  @media screen and (max-width: 480px) {
+    padding: 0.75rem;
+  } 
+}
+
+.media-body {
+  h3 {
+    padding: 0;
+    border-left: none;
+    margin: 0 !important;
+  }
+}
+
+.ml-3 {
+  a {
+    color: #fff;;
   }
 }
