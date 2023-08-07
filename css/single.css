@@ -2,11 +2,12 @@
   display: block;
 }
 
-#postHeader h1 {
+#postHeader h2 {
+  margin: 12px 0;
   font-size: 32px;
 }
 @media screen and (max-width: 1024px) {
-  #postHeader h1 {
+  #postHeader h2 {
     font-size: 27px;
   }
 }

@@ -7,7 +7,7 @@
       <?php get_template_part('object/breadcrumb'); ?>
       <section id="postContent" class="notfound">
         <span class="notfound-en">404 NOT FOUND</span>
-        <h1 class="notfound-jp">お探しのページが見つかりませんでした</h1>
+        <h2 class="notfound-jp">お探しのページが見つかりませんでした</h2>
       </section>
     </div>
   </main>

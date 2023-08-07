@@ -9,7 +9,7 @@
 
           <header id="postHeader">
             <?php get_template_part('object/breadcrumb'); ?>
-            <h1><?php the_title(); ?></h1>
+            <h2><?php the_title(); ?></h2>
             <div class="post-tag-area">
               <?php $tags = get_the_tags();
               if ($tags) {

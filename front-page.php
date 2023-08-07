@@ -76,7 +76,7 @@
       <?php if (get_theme_mod('news_section_view') === true) : ?>
         <section class="main__news">
           <?php if (!empty(get_theme_mod('news_section_name'))) : ?>
-            <h3 class="main__section__title"><?php echo get_theme_mod('news_section_name') ?></h3>
+            <h2 class="main__section__title"><?php echo get_theme_mod('news_section_name') ?></h2>
           <?php endif; ?>
           <ul class="posts-wrapper">
             <?php
@@ -102,7 +102,7 @@
       <?php if (get_theme_mod('banner_section_view') === true) : ?>
         <section class="main__banner">
           <?php if (!empty(get_theme_mod('banner_section_name'))) : ?>
-            <h3 class="main__section__title"><?php echo get_theme_mod('banner_section_name') ?></h3>
+            <h2 class="main__section__title"><?php echo get_theme_mod('banner_section_name') ?></h2>
           <?php endif; ?>
 
           <div class="main__banner__wrapper">
@@ -137,7 +137,7 @@
       <?php if (get_theme_mod('work_section_view') === true) : ?>
         <section class="main__work">
           <?php if (!empty(get_theme_mod('work_section_name'))) : ?>
-            <h3 class="main__section__title"><?php echo get_theme_mod('work_section_name') ?></h3>
+            <h2 class="main__section__title"><?php echo get_theme_mod('work_section_name') ?></h2>
           <?php endif; ?>
 
           <?php
@@ -174,7 +174,7 @@
       <?php if (get_theme_mod('contact_section_view') === true) : ?>
         <section class="main__contact">
           <?php if (!empty(get_theme_mod('contact_section_name'))) : ?>
-            <h3 class="main__section__title"><?php echo get_theme_mod('contact_section_name') ?></h3>
+            <h2 class="main__section__title"><?php echo get_theme_mod('contact_section_name') ?></h2>
           <?php endif; ?>
 
           <?php if (!empty(get_theme_mod('contact_lead_summary'))) : ?>

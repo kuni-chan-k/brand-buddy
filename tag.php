@@ -9,7 +9,9 @@
       <section class="main__work">
         <h3 class="main__section__title">タグ:<?php single_tag_title() ?></h3>
 
-        <?php get_template_part('object/breadcrumb'); ?>
+        <div class="breadcrumb__wrapper">
+          <?php get_template_part('object/breadcrumb'); ?>
+        </div>
 
         <div class="main__work__wrapper">
           <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
