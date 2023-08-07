@@ -14,17 +14,10 @@ function register_html_tag_setting()
 
 function html_tag_setting()
 {
-
   global $parent_file;
   if ($parent_file != 'options-general.php') {
     require(ABSPATH . 'wp-admin/options-head.php');
   }
-
-  // if (isset($_REQUEST['add_html_head'])) {
-  //   update_option('add_html_head', $_REQUEST['add_html_head']);
-  //   echo '<div id="settings_updated" class="updated notice is-dismissible"><p><strong>設定を保存しました</strong></p></div>';
-  // }
-
 ?>
   <div class="wrap">
     <h2>HTMLタグ設定</h2>

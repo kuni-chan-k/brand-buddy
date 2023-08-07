@@ -16,7 +16,6 @@
   <?php if (!get_option('add_html_head') == null) : ?>
     <?php echo get_option('add_html_head'); ?>
   <?php endif; ?>
-
 </head>
 
 <body <?php body_class(); ?>>

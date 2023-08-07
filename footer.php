@@ -2,7 +2,6 @@
 	  <div class="footer__inner">
 	    <?php if (has_nav_menu('footer')) : ?>
 	      <div id="commonFooterSiteMenu">
-	        <!-- global navigation -->
 	        <div>
 	          <?php
             wp_nav_menu(

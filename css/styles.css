@@ -20,15 +20,6 @@ body {
   }
 }
 
-.backcolor {
-  width: 100%;
-  height: 400px;
-  background: linear-gradient(red, white);
-  position: absolute;
-  top: 0;
-  z-index: -1;
-}
-
 .header {
   padding-top: 16px;
   color: #fff;
@@ -219,7 +210,7 @@ h3 {
   filter: invert(38%) sepia(96%) saturate(1446%) hue-rotate(90deg) brightness(107%) contrast(108%);
 }
 .main .main__news {
-  margin-bottom: 60px;
+  padding-top: 32px;
 }
 .main .main__news .posts-wrapper {
   max-width: 680px;
@@ -261,8 +252,7 @@ h3 {
   }
 }
 .main .main__banner {
-  margin-top: 32px;
-  margin-bottom: 60px;
+  padding-top: 32px;
 }
 .main .main__banner .main__banner__wrapper {
   display: flex;
@@ -286,8 +276,7 @@ h3 {
   width: 100%;
 }
 .main .main__work {
-  margin-top: 32px;
-  margin-bottom: 60px;
+  padding-top: 32px;
 }
 .main .main__work .main__work__wrapper {
   display: grid;
@@ -338,8 +327,7 @@ h3 {
   margin: 8px 0 4px;
 }
 .main .main__contact {
-  margin-top: 32px;
-  margin-bottom: 60px;
+  padding-top: 32px;
 }
 .main .main__contact p {
   text-align: center;
@@ -406,7 +394,7 @@ h3 {
 
 .notfound {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 32px;
 }
 
 .pagination {
@@ -446,7 +434,7 @@ h3 {
 }
 .pagination .nav-links a.page-numbers:hover {
   opacity: 0.7;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 .pagination .nav-links a.prev.page-numbers,
 .pagination .nav-links a.next.page-numbers {
@@ -475,6 +463,9 @@ h3 {
   transform: translateY(-5px);
 }
 
+.wp-block-button__link {
+  transition: all 0.3s ease;
+}
 .wp-block-button__link:hover {
   transform: translateY(-5px);
 }

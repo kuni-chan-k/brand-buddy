@@ -14,10 +14,10 @@
     </a>
 
     <div class="post-tag-area">
-      <?php $posttags = get_the_tags();
-      if ($posttags) {
+      <?php $tags = get_the_tags();
+      if ($tags) {
         echo '<ul>';
-        foreach ($posttags as $tag) {
+        foreach ($tags as $tag) {
           echo '<li class="' . $tag->slug . '"><a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></li>';
         }
         echo '</ul>';

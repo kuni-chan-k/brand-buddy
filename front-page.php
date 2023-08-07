@@ -5,18 +5,20 @@
     <div class="main__inner">
       <?php get_template_part('object/main_head'); ?>
 
-      <?php if (!empty(get_theme_mod('name_lead_summary'))) : ?>
-        <div class="main__introduction">
-          <p>
-            <?php echo nl2br(get_theme_mod('name_lead_summary', '')) ?>
-          </p>
-        </div>
-      <?php endif; ?>
-      <?php if (get_theme_mod('profile_button_view') === true) : ?>
-        <a href="<?php echo esc_html(get_theme_mod('profile_button_url', '')) ?>" class="more_read_link">
-          <?php echo !empty(get_theme_mod('profile_button_text')) ? get_theme_mod('profile_button_text') : '詳細を見る' ?>
-        </a>
-      <?php endif; ?>
+      <div class="main__head__context">
+        <?php if (!empty(get_theme_mod('name_lead_summary'))) : ?>
+          <div class="main__introduction">
+            <p>
+              <?php echo nl2br(get_theme_mod('name_lead_summary', '')) ?>
+            </p>
+          </div>
+        <?php endif; ?>
+        <?php if (get_theme_mod('profile_button_view') === true) : ?>
+          <a href="<?php echo esc_html(get_theme_mod('profile_button_url', '')) ?>" class="more_read_link">
+            <?php echo !empty(get_theme_mod('profile_button_text')) ? get_theme_mod('profile_button_text') : '詳細を見る' ?>
+          </a>
+        <?php endif; ?>
+      </div>
 
       <?php if (
         !empty(get_theme_mod('sns_twitter')) ||
@@ -72,7 +74,7 @@
       <?php endif; ?>
 
       <?php if (get_theme_mod('news_section_view') === true) : ?>
-        <div class="main__news">
+        <section class="main__news">
           <?php if (!empty(get_theme_mod('news_section_name'))) : ?>
             <h3 class="main__section__title"><?php echo get_theme_mod('news_section_name') ?></h3>
           <?php endif; ?>
@@ -94,7 +96,7 @@
               </div>
             <?php endif; ?>
           </ul>
-        </div>
+        </section>
       <?php endif; ?>
 
       <?php if (get_theme_mod('banner_section_view') === true) : ?>
