@@ -104,7 +104,12 @@ add_action('customize_register', 'my_theme_customize_register');
 function customizer_color()
 {
   $border_color = !empty(get_theme_mod('border_color')) ? get_theme_mod('border_color') : '#000';
-  $main_border_thickness = !empty(get_theme_mod('main_border_thickness')) ? get_theme_mod('main_border_thickness') : '6';
+  $main_border_thickness = !is_null(get_theme_mod('main_border_thickness')) ? get_theme_mod('main_border_thickness') : '6'; // 0がセットされるtことを考慮して「is_null」
+  if ($main_border_thickness === '0') {
+    $main_border_color = 'unset';
+  } else {
+    $main_border_color = $border_color;
+  }
   $main_background_color = !empty(get_theme_mod('main_background_color')) ? get_theme_mod('main_background_color') : '#fff';
   ?>
   <style type="text/css">
@@ -113,7 +118,7 @@ function customizer_color()
     }
 
     .main {
-      background-color: <?php echo $border_color; ?>;
+      background-color: <?php echo $main_border_color; ?>;
       --matched-radius-padding: <?php echo $main_border_thickness . 'px'; ?>;
     }
 
