@@ -177,4 +177,8 @@
 
 .ml-3 a {
   color: #fff !important;
+}
+
+input[type=password] {
+  border: 1px solid #333;
 }/*# sourceMappingURL=single.css.map */

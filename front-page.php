@@ -78,24 +78,24 @@
           <?php if (!empty(get_theme_mod('news_section_name'))) : ?>
             <h2 class="main__section__title"><?php echo get_theme_mod('news_section_name') ?></h2>
           <?php endif; ?>
+          <?php
+          if (!empty(get_theme_mod('news_view_count'))) {
+            query_posts('posts_per_page=' . get_theme_mod('news_view_count'));
+          } else {
+            query_posts('posts_per_page=3');
+          }
+          ?>
           <ul class="posts-wrapper">
-            <?php
-            if (!empty(get_theme_mod('news_view_count'))) {
-              query_posts('posts_per_page=' . get_theme_mod('news_view_count'));
-            } else {
-              query_posts('posts_per_page=3');
-            }
-            ?>
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <?php get_template_part('object/post_list'); ?>
               <?php endwhile;
               wp_reset_query(); ?>
-            <?php else : ?>
-              <div class="main__work__wrapper">
-                <p>記事が見つかりません</p>
-              </div>
-            <?php endif; ?>
           </ul>
+        <?php else : ?>
+          <div class="main__work__wrapper">
+            <p>記事がありません</p>
+          </div>
+        <?php endif; ?>
         </section>
       <?php endif; ?>
 
@@ -152,6 +152,8 @@
               <?php while (have_posts()) : the_post(); ?>
                 <?php get_template_part('object/work_card'); ?>
               <?php endwhile; ?>
+            <?php else : ?>
+                <p>記事がありません</p>
             <?php
               wp_reset_query();
             endif;
@@ -163,11 +165,6 @@
               もっと見る
             </a>
           <?php endif; ?>
-        </section>
-      <?php else : ?>
-        <div class="main__work__wrapper">
-          <p>記事が見つかりません</p>
-        </div>
         </section>
       <?php endif; ?>
 

@@ -182,3 +182,8 @@
     color: #fff !important;
   }
 }
+
+// パスワード保護
+input[type=password] {
+  border: 1px solid #333;
+}
