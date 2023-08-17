@@ -1,2 +1,2 @@
 # brand-buddy
-Wordpressのテーマ「BrandBuddy」のリポジトリ
+WordPressのテーマ「BrandBuddy」のリポジトリ
