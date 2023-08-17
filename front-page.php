@@ -31,7 +31,7 @@
         <div class="main__sns">
           <?php if (!empty(get_theme_mod('sns_twitter'))) : ?>
             <a class="main__sns__twitter" href="<?php echo esc_html(get_theme_mod('sns_twitter', '')) ?>" target="_blank">
-              <img src="<?php echo get_stylesheet_directory_uri(); ?>/svg/twitter_b.svg" alt="twitter" />
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/svg/x_b.svg" alt="twitter" />
             </a>
           <?php endif; ?>
 

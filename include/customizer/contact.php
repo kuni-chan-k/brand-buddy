@@ -7,13 +7,13 @@ function contact_customizer($wp_customize)
   $wp_customize->add_section(
     $section_name,
     [
-      'title'       => '問い合わせエリア',
-      'priority'    => 29,
+      'title'       => '問い合わせエリア設定',
+      'priority'    => 28,
     ]
   );
   $fields = [
     'contact_section_view' => [
-      'label'       => '問い合わせボタンを表示する',
+      'label'       => '問い合わせエリアを表示する',
       'type'        => 'checkbox',
       'default'     => false,
     ],

@@ -8,7 +8,7 @@ function share_customizer($wp_customize)
     $section_name,
     [
       'title'       => 'SNSシェア設定',
-      'priority'    => 28,
+      'priority'    => 29,
     ]
   );
   $wp_customize->add_setting('share_ogp');
@@ -26,9 +26,9 @@ function share_customizer($wp_customize)
   );
   $fields = [
     'share_twitter_card' => [
-      'label'       => 'Twitterカードタイプ',
+      'label'       => 'X(旧Twitter)カードタイプ',
       'type'        => 'select',
-      'description' => 'Twitterでシェアしたときのリンクの表示方法を選べます｡',
+      'description' => 'X(旧Twitter)でシェアしたときのリンクの表示方法を選べます｡',
       'choices'     => array(
         'summary'             => 'コンパクト',
         'summary_large_image' => 'ラージ',

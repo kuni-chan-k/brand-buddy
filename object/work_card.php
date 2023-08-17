@@ -13,17 +13,15 @@
       </div>
     </a>
 
-    <div class="post-tag-area">
       <?php $tags = get_the_tags();
       if ($tags) {
-        echo '<ul>';
+        echo '<div class="post-tag-area"><ul>';
         foreach ($tags as $tag) {
           echo '<li class="' . $tag->slug . '"><a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a></li>';
         }
-        echo '</ul>';
+        echo '</ul></div>';
       }
       ?>
-    </div>
   </div>
   
   <div class="main__work__post__meta">

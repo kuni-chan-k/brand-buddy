@@ -13,7 +13,7 @@ function sns_customizer($wp_customize)
   );
   $fields = [
     'sns_twitter' => [
-      'label'       => 'TwitterアカウントのURL',
+      'label'       => 'X(旧Twitter)アカウントのURL',
       'type'        => 'url',
       'default'     => ''
     ],

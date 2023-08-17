@@ -47,7 +47,7 @@ function my_meta_ogp()
     $ogp_image = get_template_directory_uri() . '/img/default_thumbnail.png';
   }
 
-  // Twitterカードの種類（summary_large_image または summary を指定）
+  // X(旧Twitter)カードの種類（summary_large_image または summary を指定）
   if (!empty(get_theme_mod('share_twitter_card'))) {
     $twitter_card = get_theme_mod('share_twitter_card');
   } else {
@@ -218,8 +218,8 @@ add_action('pre_get_posts', function ($query) {
     // } else {
     //   $query->set('posts_per_page', 6);
     // }
-    // 一旦､ページネーションを8で固定にする
-    $query->set('posts_per_page', 8);
+    // 一旦､ページネーションを12で固定にする
+    $query->set('posts_per_page', 12);
     return;
   }
 });
