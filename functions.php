@@ -77,6 +77,9 @@ function my_meta_ogp()
     // トップページ
     $ogp_title = get_bloginfo('name');
     $ogp_description = get_bloginfo('description') ?? '';
+    if($ogp_description) {
+      $ogp_title = get_bloginfo('name') . ' | ' . $ogp_description;
+    }
     $ogp_url = home_url();
   } elseif (is_category()) {
     // カテゴリーアーカイブ

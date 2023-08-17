@@ -7,7 +7,7 @@
       <?php get_template_part('object/main_head'); ?>
 
       <section class="main__work">
-        <h3 class="main__section__title">カテゴリー:<?php echo !empty(get_theme_mod('work_section_name')) ? get_theme_mod('work_section_name') : '実績' ?></h3>
+        <h3 class="main__section__title">カテゴリー：『<?php single_cat_title(); ?>』の記事一覧</h3>
 
         <div class="breadcrumb__wrapper">
           <?php get_template_part('object/breadcrumb'); ?>
@@ -17,6 +17,7 @@
           <?php
           $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
           $the_query = new WP_Query(array(
+            'cat' => $cat[0]->term_id,
             'post_status' => 'publish',
             'paged' => $paged,
             'orderby' => 'date',
@@ -25,7 +26,7 @@
           ?>
 
           <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
-              <?php get_template_part('object/work_card'); ?>
+            <?php get_template_part('object/work_card'); ?>
             <?php endwhile; ?>
           <?php endif; ?>
         </div>

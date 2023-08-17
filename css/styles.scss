@@ -142,7 +142,11 @@ h2,h3 {
       margin: 0 auto;
       border-radius: 100%;
       overflow: hidden;
-      img {
+      &:hover {
+        transform: translateY(-5px);
+      }
+      a {
+        display: inline-block;
         width: inherit;
         height: inherit;
         object-fit: cover;
@@ -223,12 +227,15 @@ h2,h3 {
 
       li {
         border-bottom: 0.5px solid #919191;
+        &:hover {
+          opacity: 0.7;
+        }
       }
 
       .post-wrapper {
         display: flex;
-        flex-wrap: nowrap;
-        gap: 30px;
+        flex-wrap: wrap;
+        gap: 8px;
         padding: 12px;
         @media screen and (max-width: 1024px) {
           gap: 0;
@@ -244,8 +251,11 @@ h2,h3 {
       }
 
       a {
-        padding: 0;
+        padding: 4px;
         text-decoration: none;
+        &:hover {
+          opacity: 0.7;
+        }
       }
 
       .post-date {
@@ -255,6 +265,7 @@ h2,h3 {
       }
 
       .post-category {
+        margin: 0 4px 0 8px;
         @media screen and (max-width: 1024px) {
           margin-right: 8px;
         }
@@ -371,6 +382,7 @@ h2,h3 {
   }
 
   a {
+    padding: 2px 0;
     font-size: 14px;
     color: #0017CC;
     text-decoration: underline !important;

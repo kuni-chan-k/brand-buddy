@@ -142,18 +142,23 @@
 
           <?php
           if (!empty(get_theme_mod('work_category'))) {
-            query_posts('category_name=' . get_theme_mod('work_category'));
-            query_posts('posts_per_page=' . get_theme_mod('work_view_count'));
+            $the_query = new WP_Query(array(
+              'cat' => get_category_by_slug(get_theme_mod('work_category'))->term_id,
+              'post_status' => 'publish',
+              'paged' => $paged,
+              'orderby' => 'date',
+              'order' => 'DESC',
+              'posts_per_page' => get_theme_mod('work_view_count')
+            ));
           }
           ?>
 
           <div class="main__work__wrapper">
-            <?php if (have_posts()) : ?>
-              <?php while (have_posts()) : the_post(); ?>
+            <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
                 <?php get_template_part('object/work_card'); ?>
               <?php endwhile; ?>
             <?php else : ?>
-                <p>記事がありません</p>
+              <p>記事がありません</p>
             <?php
               wp_reset_query();
             endif;
