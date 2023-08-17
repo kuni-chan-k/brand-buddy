@@ -197,9 +197,9 @@ h2,h3 {
     .main__sns__facebook {
       filter: invert(37%) sepia(26%) saturate(4383%) hue-rotate(198deg) brightness(96%) contrast(97%);
     }
-    .main__sns__twitter {
-      filter: invert(62%) sepia(38%) saturate(5930%) hue-rotate(176deg) brightness(97%) contrast(96%);
-    }
+    // .main__sns__twitter {
+    //   filter: invert(62%) sepia(38%) saturate(5930%) hue-rotate(176deg) brightness(97%) contrast(96%);
+    // }
     .main__sns__youtube {
       filter: invert(22%) sepia(77%) saturate(2853%) hue-rotate(348deg) brightness(86%) contrast(97%);
     }
@@ -263,7 +263,7 @@ h2,h3 {
   }
 
   .main__banner {
-    padding-top: 64px;
+    padding-top: 16px;
     .main__banner__wrapper {
       display: flex;
       flex-wrap: wrap;
