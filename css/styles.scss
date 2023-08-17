@@ -215,7 +215,7 @@ h2,h3 {
   }
 
   .main__news {
-    padding-top: 32px;
+    padding: 8px 0 40px;
     .posts-wrapper {
       max-width: 680px;
       margin-left: auto !important;
@@ -263,7 +263,7 @@ h2,h3 {
   }
 
   .main__banner {
-    padding-top: 16px;
+    padding: 8px 0 40px;
     .main__banner__wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -290,7 +290,7 @@ h2,h3 {
   }
 
   .main__work {
-    padding-top: 32px;
+    padding: 8px 0 40px;
     .main__work__wrapper {
       display: grid;
       gap:32px;

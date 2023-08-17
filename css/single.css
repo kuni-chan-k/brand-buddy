@@ -105,6 +105,11 @@
   list-style-type: decimal;
   padding-left: 1.2rem;
 }
+.wp-block-post-content li,
+#postContent li {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
 .wp-block-post-content .wp-block-image,
 #postContent .wp-block-image {
   padding-top: 0;
@@ -129,6 +134,12 @@
 .wp-block-post-content .wp-block-quote cite,
 #postContent .wp-block-quote cite {
   display: block;
+}
+.wp-block-post-content .wp-block-quote .wp-element-caption,
+#postContent .wp-block-quote .wp-element-caption {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 12px 0;
 }
 .wp-block-post-content .wp-block-embed,
 #postContent .wp-block-embed {

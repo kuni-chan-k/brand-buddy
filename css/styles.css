@@ -201,7 +201,7 @@ h2, h3 {
   filter: invert(38%) sepia(96%) saturate(1446%) hue-rotate(90deg) brightness(107%) contrast(108%);
 }
 .main .main__news {
-  padding-top: 32px;
+  padding: 8px 0 40px;
 }
 .main .main__news .posts-wrapper {
   max-width: 680px;
@@ -243,7 +243,7 @@ h2, h3 {
   }
 }
 .main .main__banner {
-  padding-top: 16px;
+  padding: 8px 0 40px;
 }
 .main .main__banner .main__banner__wrapper {
   display: flex;
@@ -267,7 +267,7 @@ h2, h3 {
   width: 100%;
 }
 .main .main__work {
-  padding-top: 32px;
+  padding: 8px 0 40px;
 }
 .main .main__work .main__work__wrapper {
   display: grid;
