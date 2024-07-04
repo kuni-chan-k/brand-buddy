@@ -8,6 +8,7 @@ WordPressのテーマ「BrandBuddy」のリポジトリ
 4. gitのタグを作成(CSSに記載したバージョンに合わせる)
    - git tag v1.0.13
    - git push origin v1.0.13
+5. Githubで作成したタグをリリースする 
 
 ※参考 https://norando.net/plugin-update-checker_private/#google_vignette
 
