@@ -26,7 +26,8 @@
         !empty(get_theme_mod('sns_instagram')) ||
         !empty(get_theme_mod('sns_tiktok')) ||
         !empty(get_theme_mod('sns_line')) ||
-        !empty(get_theme_mod('sns_github'))
+        !empty(get_theme_mod('sns_github')) ||
+        !empty(get_theme_mod('sns_note'))
       ) : ?>
         <div class="main__sns">
           <?php if (!empty(get_theme_mod('sns_twitter'))) : ?>
@@ -68,6 +69,12 @@
           <?php if (!empty(get_theme_mod('sns_github'))) : ?>
             <a class="main__sns__github" href="<?php echo esc_html(get_theme_mod('sns_github', '')) ?>" target="_blank">
               <img src="<?php echo get_stylesheet_directory_uri(); ?>/svg/github-mark.svg" alt="line" />
+            </a>
+          <?php endif; ?>
+
+          <?php if (!empty(get_theme_mod('sns_note'))) : ?>
+            <a class="main__sns__github" href="<?php echo esc_html(get_theme_mod('sns_note', '')) ?>" target="_blank">
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/svg/note.svg" alt="line" />
             </a>
           <?php endif; ?>
         </div>

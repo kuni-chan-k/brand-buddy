@@ -76,6 +76,7 @@
     font-size: 0.7rem;
     text-decoration: none;
     color: #999;
+    overflow-wrap: anywhere;
 }
 @media screen and (max-width: 767px) {
 /* （ここにモバイル用スタイルを記述） */

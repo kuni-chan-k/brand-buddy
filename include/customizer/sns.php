@@ -115,4 +115,13 @@ function sns_customizer($wp_customize)
     ],
   ];
   add_customizer_control($wp_customize, $fields, $option_name, $section_name);
+
+  $fields = [
+    'sns_note' => [
+      'label'       => 'noteアカウントのURL',
+      'type'        => 'url',
+      'default'     => ''
+    ],
+  ];
+  add_customizer_control($wp_customize, $fields, $option_name, $section_name);
 }
