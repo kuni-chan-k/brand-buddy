@@ -257,4 +257,4 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
   'brand-buddy'
 );
 $myUpdateChecker->setBranch('main');
-$myUpdateChecker->setAuthentication('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');
+$myUpdateChecker->setAuthentication('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');
